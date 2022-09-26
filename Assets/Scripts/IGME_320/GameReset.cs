@@ -5,22 +5,23 @@ using UnityEngine;
 public class GameReset : MonoBehaviour
 {
     [SerializeField] private bool gameIsWon;
+    [SerializeField] private GameObject enemy;
+    [SerializeField] private GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
         //Intialize Variables
-
-        // reset player position
-        // reset monster position
-        // reset powerups/other collectibles
-        gameIsWon = false;
+        ResetGame();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(gameIsWon)
+        {
+            ResetGame();
+        }
     }
 
     void EndGame()
@@ -32,7 +33,12 @@ public class GameReset : MonoBehaviour
 
     void ResetGame()
     {
+        // reset player position
+        player.transform.position = Vector3.one;
+        // reset monster position
+        enemy.transform.position = Vector3.zero;
+        // reset powerups/other collectibles
+
         gameIsWon = false;
-        //reintialize variables
     }
 }
