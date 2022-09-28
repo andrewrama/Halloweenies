@@ -1,25 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class movement : MonoBehaviour
 {
     // VARIABLES:
 
-    // Update to point towards the player every frame
-    public Vector3 direction = Vector3.right;
+    // Get a reference to the nav mesh agent component on the enemy
+    public NavMeshAgent agent;
 
-    // How far it moves in a second
-    public float speed = 100;
-
-    // How many seconds pass every frame (much less than 1)
-    float timeStep;
+    // Get a reference to the player
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
-        // Update time step once rather than calling it every frame
-        timeStep = Time.fixedDeltaTime;
+
     }
 
     // Update is called once per frame
@@ -30,14 +27,7 @@ public class movement : MonoBehaviour
 
     void Move()
     {
-        // TODO: Calculate direction
-        direction = direction.normalized;
-
-        // Calculate distance to move
-        float distance = speed * timeStep;
-
-        // Move the fella
-        // TODO: Don't move through walls pls
-        gameObject.transform.position = gameObject.transform.position + direction * distance;
+        // Update target position to be the player's position
+        agent.SetDestination(player.transform.position);
     }
 }
