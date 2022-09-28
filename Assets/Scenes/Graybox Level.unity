@@ -1477,7 +1477,8 @@ PrefabInstance:
       propertyPath: m_Lens.m_SensorSize.x
       value: 2.0192573
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2070925442191277753, guid: a1a802ecaf6775746bb2a929fb554ad8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a1a802ecaf6775746bb2a929fb554ad8, type: 3}
 --- !u!1 &1688729337
 GameObject:
