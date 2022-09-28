@@ -34,7 +34,7 @@ public class GameReset : MonoBehaviour
     void ResetGame()
     {
         // reset player position
-        player.transform.position = Vector3.one;
+        player.transform.position = new Vector3(0.0f, 0.0f, -25.0f);
         // reset monster position
         enemy.transform.position = Vector3.zero;
         // reset powerups/other collectibles
