@@ -13,18 +13,11 @@ public class movement : MonoBehaviour
     // Get a reference to the player
     public GameObject player;
 
-    // If they are afraid and running away from the player
-    bool scared = false;
-
-    // Keeps track of how many fixedUpdate()s until its not scared anymore
-    int scaredTimer = 0;
-
-    // How long it takes the enemy for them to not be scared anymore
-    const int SCARED_TIME = 300;
-
-    // Distance away that the monster will try to run from the player
-    const int SCARE_RUN_DISTANCE = 5;
-
+    // Fear variables
+    bool scared = false; // If they are afraid and running away from the player
+    int scaredTimer = 0; // Keeps track of how many fixedUpdate()s until its not scared anymore
+    const int SCARED_TIME = 300; // How long it takes the enemy for them to not be scared anymore
+    const int SCARED_RUN_DISTANCE = 5; // Distance away that the monster will try to run from the player
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +28,7 @@ public class movement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        UpdateScared();
         Move();
     }
 
@@ -51,7 +45,7 @@ public class movement : MonoBehaviour
         {
             // Calculate a new target position that is in the oposite direction of the player
             Vector3 directionAwayFromPlayer = player.transform.position - transform.position;
-            Vector3 targetLocation = directionAwayFromPlayer.normalized * SCARE_RUN_DISTANCE;
+            Vector3 targetLocation = directionAwayFromPlayer.normalized * SCARED_RUN_DISTANCE;
             agent.SetDestination(targetLocation);
         }
     }
