@@ -27,7 +27,7 @@ public class GameReset : MonoBehaviour
         }
     }
 
-    void EndGame()
+    public void EndGame()
     {
         gameIsWon = true;
         // stop the game
