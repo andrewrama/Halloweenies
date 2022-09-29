@@ -203,7 +203,6 @@ GameObject:
   - component: {fileID: 341782343}
   - component: {fileID: 341782342}
   - component: {fileID: 341782341}
-  - component: {fileID: 341782340}
   m_Layer: 5
   m_Name: Start Button
   m_TagString: Untagged
@@ -232,18 +231,6 @@ RectTransform:
   m_AnchoredPosition: {x: 15.912598, y: -111}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &341782340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 341782338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d630f2a3545517345b22f55a41a812e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &341782341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,7 +275,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 341782340}
+      - m_Target: {fileID: 425858473}
         m_TargetAssemblyTypeName: GameSceneManager, Assembly-CSharp
         m_MethodName: LoadScene
         m_Mode: 1
@@ -350,6 +337,7 @@ GameObject:
   - component: {fileID: 425858471}
   - component: {fileID: 425858470}
   - component: {fileID: 425858469}
+  - component: {fileID: 425858473}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -440,6 +428,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &425858473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425858468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d630f2a3545517345b22f55a41a812e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &597872112
 GameObject:
   m_ObjectHideFlags: 0
