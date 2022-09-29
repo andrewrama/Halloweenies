@@ -540,7 +540,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 4
+  m_Speed: 7
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -584,6 +584,7 @@ MonoBehaviour:
   gameIsWon: 0
   enemy: {fileID: 156708719}
   player: {fileID: 456309445}
+  enemySpawns: []
 --- !u!4 &179689051
 Transform:
   m_ObjectHideFlags: 0
