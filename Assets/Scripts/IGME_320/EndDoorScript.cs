@@ -20,7 +20,7 @@ public class EndDoorScript : MonoBehaviour
         if (CheckDist())
         {
             //Debug.Log("Text: At the door");
-            gameManager.GetComponent<GameReset>().EndGame();
+            gameManager.GetComponent<GameReset>().GameWon();
         }
     }
 

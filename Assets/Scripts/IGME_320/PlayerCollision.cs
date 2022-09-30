@@ -29,6 +29,6 @@ public class PlayerCollision : MonoBehaviour
     {
         float dist = Mathf.Sqrt(Mathf.Pow(player.transform.position.x - enemy.transform.position.x, 2) +
             Mathf.Pow(player.transform.position.z - enemy.transform.position.z, 2));
-        return dist < 3.0f;
+        return dist < 2.0f;
     }
 }
