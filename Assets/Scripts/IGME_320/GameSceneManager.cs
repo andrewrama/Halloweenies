@@ -15,4 +15,8 @@ public class GameSceneManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
  
+    public void InstructionsScene()
+    {
+        SceneManager.LoadScene(3);
+    }
 }

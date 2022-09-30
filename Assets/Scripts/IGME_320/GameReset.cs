@@ -50,6 +50,8 @@ public class GameReset : MonoBehaviour
         gameIsWon = false;
     }
 
+    //Functions that change the scene based on winning or losing
+
     public void GameWon()
     {
         SceneManager.LoadScene(2);
@@ -57,6 +59,6 @@ public class GameReset : MonoBehaviour
 
     public void GameLost()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(4);
     }
 }
