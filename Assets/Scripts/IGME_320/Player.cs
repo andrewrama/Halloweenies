@@ -8,9 +8,8 @@ public class Player : MonoBehaviour
     // Reference to the enemy
     public GameObject enemy;
 
-    // Scare cooldown ability
-    int scareCooldownTimer = 0; // How many fixedUpdate()s until they can use scare again
-    public int SCARE_COOLDOWN = 600; // How long it will take to recharge
+    // Records if the player can scare or not
+    bool canScare = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,33 +20,29 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        UpdateScare();
+
     }
 
     public void OnScare(InputValue value)
     {
         // Test if they can use it
-        if (scareCooldownTimer == 0) // It is off cooldown
+        if (canScare) // They can scare
         {
             // Scare the enemy
             enemy.GetComponent<Monster>().Spook();
 
-            // Set it on cooldown
-            scareCooldownTimer = SCARE_COOLDOWN;
+            // Remove their ability to scare
+            canScare = false;
         }
-    }
-
-    void UpdateScare()
-    {
-        // Decrease the scared timer down by 1 to 0
-        if (scareCooldownTimer > 0) // They are still scared
+        else
         {
-            scareCooldownTimer -= 1;
+            Debug.Log("Can't scare yet IDOT. Get a candy you fucking FOOL");
         }
     }
 
     public void CollectCandy()
     {
         Debug.Log("Candy Collected");
+        canScare = true;
     }
 }
