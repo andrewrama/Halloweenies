@@ -24,7 +24,7 @@ public class candy : MonoBehaviour
         if(other.gameObject == player)
         {
             // Tell the player that they got a candy
-            player.GetComponent<playerScare>().CollectCandy();
+            player.GetComponent<Player>().CollectCandy();
 
             // Destroy this candy
             Destroy(gameObject);

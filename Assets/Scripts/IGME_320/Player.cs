@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
         if (scareCooldownTimer == 0) // It is off cooldown
         {
             // Scare the enemy
-            enemy.GetComponent<movement>().Spook();
+            enemy.GetComponent<Monster>().Spook();
 
             // Set it on cooldown
             scareCooldownTimer = SCARE_COOLDOWN;
