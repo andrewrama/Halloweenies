@@ -5,6 +5,21 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    // Keys inventory
+    [SerializeField] private GameObject keyPrefab;
+    public int Keys
+    {
+        get
+        {
+            return keys;
+        }
+        set
+        {
+            keys = value;
+        }
+    }
+    private int keys;
+
     // Reference to the enemy
     public GameObject enemy;
 
@@ -14,7 +29,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        keys = 0;
     }
 
     // Update is called once per frame
