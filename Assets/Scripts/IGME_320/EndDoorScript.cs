@@ -17,11 +17,11 @@ public class EndDoorScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (CheckDist())
+        /*if (CheckDist())
         {
             //Debug.Log("Text: At the door");
             gameManager.GetComponent<GameReset>().GameWon();
-        }
+        }*/
     }
 
     // Checks the player's distance from the door 
@@ -30,5 +30,15 @@ public class EndDoorScript : MonoBehaviour
         float dist = Mathf.Sqrt(Mathf.Pow(player.transform.position.x - door.transform.position.x, 2) + 
             Mathf.Pow(player.transform.position.z - door.transform.position.z, 2));
         return dist < 3.0f;
+    }
+
+    // Open the door (if it's close enough) 
+    public void OnOpen()
+    {
+        if (CheckDist())
+        {
+            //Debug.Log("Text: At the door");
+            gameManager.GetComponent<GameReset>().GameWon();
+        }
     }
 }
