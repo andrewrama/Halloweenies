@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameReset : MonoBehaviour
+public class GameStateManager : MonoBehaviour
 {
     [SerializeField] private bool gameIsWon;
+    [SerializeField] private bool gameIsPaused;
     [SerializeField] private GameObject enemy;
     [SerializeField] private GameObject player;
     [SerializeField] private Vector3[] enemySpawns;
@@ -27,6 +28,16 @@ public class GameReset : MonoBehaviour
         if(gameIsWon)
         {
             ResetGame();
+        }
+
+        if(gameIsPaused)
+        {
+            // Pause game;
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
         }
 
 
