@@ -41,6 +41,9 @@ public class GameReset : MonoBehaviour
 
     void ResetGame()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
         // reset player position
         player.transform.position = new Vector3(0.0f, 0.0f, -25.0f);
         // reset monster position
@@ -54,11 +57,15 @@ public class GameReset : MonoBehaviour
 
     public void GameWon()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene(2);
     }
 
     public void GameLost()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene(4);
     }
 }
