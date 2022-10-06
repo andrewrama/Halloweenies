@@ -45,4 +45,9 @@ public class playerScare : MonoBehaviour
             scareCooldownTimer -= 1;
         }
     }
+
+    public void CollectCandy()
+    {
+        Debug.Log("Candy Collected");
+    }
 }
