@@ -37,7 +37,7 @@ public class EndDoorScript : MonoBehaviour
     {
         if (CheckDist())
         {
-            //Debug.Log("Text: At the door");
+            Debug.Log("Text: the door is open");
             gameManager.GetComponent<GameReset>().GameWon();
         }
     }
