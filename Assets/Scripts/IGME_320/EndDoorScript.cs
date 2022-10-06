@@ -32,13 +32,17 @@ public class EndDoorScript : MonoBehaviour
         return dist < 3.0f;
     }
 
-    // Open the door (if it's close enough) 
-    public void OnOpen()
+    public void OpenDoor()
     {
         if (CheckDist())
         {
-            //Debug.Log("Text: At the door");
+            Debug.Log("Text: the door is open");
             gameManager.GetComponent<GameReset>().GameWon();
         }
+    }
+
+    // Open the door (if it's close enough) 
+    public void OnOpen()
+    {
     }
 }
