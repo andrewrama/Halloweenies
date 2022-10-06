@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class playerScare : MonoBehaviour
+public class Player : MonoBehaviour
 {
     // Reference to the enemy
     public GameObject enemy;
@@ -30,7 +30,7 @@ public class playerScare : MonoBehaviour
         if (scareCooldownTimer == 0) // It is off cooldown
         {
             // Scare the enemy
-            enemy.GetComponent<movement>().Spook();
+            enemy.GetComponent<Monster>().Spook();
 
             // Set it on cooldown
             scareCooldownTimer = SCARE_COOLDOWN;
@@ -44,5 +44,10 @@ public class playerScare : MonoBehaviour
         {
             scareCooldownTimer -= 1;
         }
+    }
+
+    public void CollectCandy()
+    {
+        Debug.Log("Candy Collected");
     }
 }
