@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EndDoorScript : MonoBehaviour
+public class PlayerCollision : MonoBehaviour
 {
-    [SerializeField] private GameObject door;
+    [SerializeField] private GameObject enemy;
     [SerializeField] private GameObject gameManager;
     [SerializeField] private GameObject player;
 
@@ -20,15 +20,15 @@ public class EndDoorScript : MonoBehaviour
         if (CheckDist())
         {
             //Debug.Log("Text: At the door");
-            gameManager.GetComponent<GameReset>().GameWon();
+            gameManager.GetComponent<GameReset>().GameLost();
         }
     }
 
-    // Checks the player's distance from the door 
+    // Checks the player's distance from the enemy
     bool CheckDist()
     {
-        float dist = Mathf.Sqrt(Mathf.Pow(player.transform.position.x - door.transform.position.x, 2) + 
-            Mathf.Pow(player.transform.position.z - door.transform.position.z, 2));
-        return dist < 3.0f;
+        float dist = Mathf.Sqrt(Mathf.Pow(player.transform.position.x - enemy.transform.position.x, 2) +
+            Mathf.Pow(player.transform.position.z - enemy.transform.position.z, 2));
+        return dist < 2.0f;
     }
 }
