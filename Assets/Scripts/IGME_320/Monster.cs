@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class movement : MonoBehaviour
+public class Monster : MonoBehaviour
 {
     // VARIABLES:
 

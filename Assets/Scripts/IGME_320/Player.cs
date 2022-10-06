@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class playerScare : MonoBehaviour
+public class Player : MonoBehaviour
 {
     // Reference to the enemy
     public GameObject enemy;

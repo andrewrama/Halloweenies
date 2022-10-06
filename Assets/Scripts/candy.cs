@@ -21,7 +21,7 @@ public class candy : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Collision detected");
-        if(other)
+        if(other.gameObject == player)
         {
             // Tell the player that they got a candy
             player.GetComponent<playerScare>().CollectCandy();
