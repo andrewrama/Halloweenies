@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
     // Reference to the enemy
     public GameObject enemy;
+    public GameObject exitDoor;
 
     // Records if the player can scare or not
     bool canScare = false;
@@ -38,6 +39,12 @@ public class Player : MonoBehaviour
         {
             Debug.Log("Can't scare yet IDOT. Get a candy you fucking FOOL");
         }
+    }
+
+    // Open the door (if it's close enough) 
+    public void OnOpen(InputValue value)
+    {
+        exitDoor.GetComponent<EndDoorScript>().OpenDoor();
     }
 
     public void CollectCandy()
