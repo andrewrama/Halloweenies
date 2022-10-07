@@ -930,11 +930,12 @@ MonoBehaviour:
     by the monster that will \n\t\tbe continuously following you through the maze.
     \n        Your goal is to find the door at the end of the maze!\n\nInstructions\n\n\t* 
     Use the \u201CWASD\u201D keys to move around the maze\n\n\t*  Collect a candy
-    (little gray cube) scattered throughout the map to gain the\n\t \tability to
+    (little blue cube) scattered throughout the map to gain the\n\t \tability to
     scare. After you use the scare, you must collect\n\t \tanother candy to do it
     again.\n\n\t*  Use the [Spacebar] to scare away the monster, this will make the
     monster run away from \n\t\tyou for 5 seconds. It has a 10 second cooldown.\r\n\n\t* 
-    The door is big and blue and can be found at the end of the maze\n\n"
+    The door is big and blue and can be found at the end of the maze, \n\t\tpress
+    [E] to open it and win game\n\n"
 --- !u!222 &1950341223
 CanvasRenderer:
   m_ObjectHideFlags: 0
