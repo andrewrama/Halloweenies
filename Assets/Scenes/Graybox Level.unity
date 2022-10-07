@@ -518,6 +518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameIsWon: 0
+  gameIsPaused: 0
   enemy: {fileID: 156708719}
   player: {fileID: 456309445}
   enemySpawns: []
@@ -1602,8 +1603,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8733ea28abce8547bdb52b013f277e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keyPrefab: {fileID: 0}
   enemy: {fileID: 156708719}
-  SCARE_COOLDOWN: 600
 --- !u!65 &456309454
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7336,10 +7337,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -5985414255339818841, guid: 8f4b45b27a15fa64c9da97c0bf8a155d,
+    - target: {fileID: 3191157158323717118, guid: 8f4b45b27a15fa64c9da97c0bf8a155d,
         type: 3}
-      propertyPath: m_UseGravity
-      value: 0
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5597382897505534091, guid: 8f4b45b27a15fa64c9da97c0bf8a155d,
         type: 3}
@@ -7349,7 +7350,7 @@ PrefabInstance:
     - target: {fileID: 5597382897505534091, guid: 8f4b45b27a15fa64c9da97c0bf8a155d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.17
+      value: 4.72
       objectReference: {fileID: 0}
     - target: {fileID: 5597382897505534091, guid: 8f4b45b27a15fa64c9da97c0bf8a155d,
         type: 3}
@@ -7359,7 +7360,7 @@ PrefabInstance:
     - target: {fileID: 5597382897505534091, guid: 8f4b45b27a15fa64c9da97c0bf8a155d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -21.75
+      value: -26.85
       objectReference: {fileID: 0}
     - target: {fileID: 5597382897505534091, guid: 8f4b45b27a15fa64c9da97c0bf8a155d,
         type: 3}
@@ -7401,7 +7402,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: collectable
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 8f4b45b27a15fa64c9da97c0bf8a155d, type: 3}
 --- !u!1001 &8280404079232958389
 PrefabInstance:
