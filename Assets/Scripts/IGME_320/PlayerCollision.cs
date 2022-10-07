@@ -20,7 +20,7 @@ public class PlayerCollision : MonoBehaviour
         if (CheckDist())
         {
             //Debug.Log("Text: At the door");
-            gameManager.GetComponent<GameReset>().GameLost();
+            gameManager.GetComponent<GameStateManager>().GameLost();
         }
     }
 
