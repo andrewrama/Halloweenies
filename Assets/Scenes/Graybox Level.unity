@@ -2003,6 +2003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 156708719}
+  exitDoor: {fileID: 1940938311}
 --- !u!65 &456309454
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2679,8 +2680,8 @@ Transform:
   - {fileID: 795814883}
   - {fileID: 1239503475}
   - {fileID: 1640630453}
-  - {fileID: 427583335}
   - {fileID: 1124240780}
+  - {fileID: 427583335}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
