@@ -9,6 +9,7 @@ public class GameStateManager : MonoBehaviour
     [SerializeField] private bool gameIsPaused;
     [SerializeField] private GameObject enemy;
     [SerializeField] private GameObject player;
+    [SerializeField] private GameObject pauseMenu;
     [SerializeField] private Vector3[] enemySpawns;
 
 
@@ -33,10 +34,13 @@ public class GameStateManager : MonoBehaviour
         if(gameIsPaused)
         {
             // Pause game;
+            pauseMenu.SetActive(true);
+            //TODO: Get the goddamn monster to shut up.
             Time.timeScale = 0;
         }
         else
         {
+            pauseMenu.SetActive(false);
             Time.timeScale = 1;
         }
 
