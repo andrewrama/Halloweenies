@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     // Keys inventory
-    [SerializeField] private GameObject keyPrefab;
     public int Keys
     {
         get

@@ -2088,7 +2088,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8733ea28abce8547bdb52b013f277e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyPrefab: {fileID: 0}
   gamePauser: {fileID: 179689049}
   enemy: {fileID: 156708719}
   exitDoor: {fileID: 1940938311}
