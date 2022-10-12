@@ -54,6 +54,11 @@ public class GameStateManager : MonoBehaviour
         // pull up win screen scene here
     }
 
+    public void PauseGame()
+    {
+        gameIsPaused = !gameIsPaused;
+    }
+
     void ResetGame()
     {
         Cursor.visible = false;

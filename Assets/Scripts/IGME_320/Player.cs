@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
         }
     }
     private int keys;
+    [SerializeField] private GameObject gamePauser;
 
     // Reference to the enemy
     public GameObject enemy;
@@ -60,6 +61,11 @@ public class Player : MonoBehaviour
     public void OnOpen(InputValue value)
     {
         exitDoor.GetComponent<EndDoorScript>().OpenDoor();
+    }
+
+    public void OnPause(InputValue value)
+    {
+        gamePauser.GetComponent<GameStateManager>().PauseGame();
     }
 
     public void CollectCandy()
