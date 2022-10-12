@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     // Reference to the enemy
     public GameObject enemy;
     public GameObject exitDoor;
+    public GameObject gameStateManagerObject;
+    GameStateManager gameStateManager;
 
     // Records if the player can scare or not
     bool canScare = false;
@@ -30,6 +32,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameStateManager = gameStateManagerObject.GetComponent<GameStateManager>();
         keys = 0;
     }
 
@@ -71,5 +74,26 @@ public class Player : MonoBehaviour
     {
         Debug.Log("Candy Collected");
         canScare = true;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Collision detected");
+
+        // Store the name to check what type of collidable object it is
+        string tag = other.gameObject.tag;
+
+        switch (tag) {
+            case "Candy": // Candy
+                CollectCandy();
+                Destroy(other.gameObject);
+                break;
+            case "Enemy": // Enemy (oh the misery)
+                gameStateManager.GameLost();
+                break;
+            case "EndDoor": // One does not simply walk into enddoor
+                gameStateManager.GameWon();
+                break;
+        }
     }
 }

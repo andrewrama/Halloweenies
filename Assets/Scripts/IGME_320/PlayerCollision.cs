@@ -17,11 +17,11 @@ public class PlayerCollision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (CheckDist())
-        {
-            //Debug.Log("Text: At the door");
-            gameManager.GetComponent<GameStateManager>().GameLost();
-        }
+    //    if (CheckDist())
+    //    {
+    //        //Debug.Log("Text: At the door");
+    //        gameManager.GetComponent<GameStateManager>().GameLost();
+    //    }
     }
 
     // Checks the player's distance from the enemy
