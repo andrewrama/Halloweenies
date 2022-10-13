@@ -365,7 +365,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 28, y: -150}
+  m_AnchoredPosition: {x: 28, y: -215}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1007517663
@@ -929,10 +929,13 @@ MonoBehaviour:
   m_Text: "Goal:\n\n\t*  Traverse through the maze while avoiding getting caught
     by the monster that will \n\t\tbe continuously following you through the maze.
     \n        Your goal is to find the door at the end of the maze!\n\nInstructions\n\n\t* 
-    Use the \u201CWASD\u201D keys to move around the maze\n\n\t*  Use the \u201CE\u201D
-    key to scare away the monster, this will make the monster run away from \n\t\tyou
-    for 5 seconds. It has a 10 second cooldown.\r\n\n\t*  The door is big and blue
-    and can be found at the end of the maze\n\n"
+    Use the \u201CWASD\u201D keys to move around the maze\n\n\t*  Collect a candy
+    (little blue cube) scattered throughout the map to gain the\n\t \tability to
+    scare. After you use the scare, you must collect\n\t \tanother candy to do it
+    again.\n\n\t*  Use the [Spacebar] to scare away the monster, this will make the
+    monster run away from \n\t\tyou for 5 seconds. It has a 10 second cooldown.\r\n\n\t* 
+    The door is big and blue and can be found at the end of the maze, \n\t\tpress
+    [E] to open it and win game\n\n"
 --- !u!222 &1950341223
 CanvasRenderer:
   m_ObjectHideFlags: 0

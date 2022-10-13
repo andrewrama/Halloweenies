@@ -5,49 +5,119 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    // Keys inventory
+    public int Keys
+    {
+        get
+        {
+            return keys;
+        }
+        set
+        {
+            keys = value;
+        }
+    }
+    private int keys;
+    [SerializeField] private GameObject gamePauser;
+
     // Reference to the enemy
     public GameObject enemy;
+    public GameObject exitDoor;
+    public GameObject gameStateManagerObject;
+    GameStateManager gameStateManager;
 
-    // Scare cooldown ability
-    int scareCooldownTimer = 0; // How many fixedUpdate()s until they can use scare again
-    public int SCARE_COOLDOWN = 600; // How long it will take to recharge
+    // Records if the player can scare or not
+    bool canScare = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameStateManager = gameStateManagerObject.GetComponent<GameStateManager>();
+        keys = 0;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        UpdateScare();
+        if (CheckDist())
+        {
+            ShowButtonInst();
+        }
+        else
+        {
+            HideButtonInst();
+        }
     }
 
     public void OnScare(InputValue value)
     {
         // Test if they can use it
-        if (scareCooldownTimer == 0) // It is off cooldown
+        if (canScare) // They can scare
         {
             // Scare the enemy
             enemy.GetComponent<Monster>().Spook();
 
-            // Set it on cooldown
-            scareCooldownTimer = SCARE_COOLDOWN;
+            // Remove their ability to scare
+            canScare = false;
+        }
+        else
+        {
+            Debug.Log("Can't scare yet IDOT. Get a candy you fucking FOOL");
         }
     }
 
-    void UpdateScare()
+    // Open the door (if it's close enough) 
+    public void OnOpen(InputValue value)
     {
-        // Decrease the scared timer down by 1 to 0
-        if (scareCooldownTimer > 0) // They are still scared
-        {
-            scareCooldownTimer -= 1;
-        }
+        exitDoor.GetComponent<EndDoorScript>().OpenDoor();
+    }
+
+    public void OnPause(InputValue value)
+    {
+        gamePauser.GetComponent<GameStateManager>().PauseGame();
+    }
+
+    public void ShowButtonInst()
+    {
+        gamePauser.GetComponent<GameStateManager>().ShowDoorButton();
+    }
+
+    public void HideButtonInst()
+    {
+        gamePauser.GetComponent<GameStateManager>().HideDoorButton();
     }
 
     public void CollectCandy()
     {
         Debug.Log("Candy Collected");
+        canScare = true;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Collision detected");
+
+        // Store the name to check what type of collidable object it is
+        string tag = other.gameObject.tag;
+
+        switch (tag) {
+            case "Candy": // Candy
+                CollectCandy();
+                Destroy(other.gameObject);
+                break;
+            case "Enemy": // Enemy (oh the misery)
+                gameStateManager.GameLost();
+                break;
+            case "EndDoor": // One does not simply walk into enddoor
+                gameStateManager.GameWon();
+                break;
+        }
+    }
+
+    bool CheckDist()
+    {
+        float dist = Mathf.Sqrt(Mathf.Pow(this.gameObject.transform.position.x - exitDoor.transform.position.x, 2) +
+            Mathf.Pow(this.gameObject.transform.position.z - exitDoor.transform.position.z, 2));
+        return dist < 3.0f;
     }
 }

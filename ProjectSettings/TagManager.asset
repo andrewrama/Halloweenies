@@ -6,6 +6,9 @@ TagManager:
   tags:
   - CinemachineTarget
   - Enemy
+  - Candy
+  - EndDoor
+  - Key
   layers:
   - Default
   - TransparentFX

@@ -9,7 +9,7 @@ public class LightFlicker : MonoBehaviour
     public Light light;
 
     // Array of random values for the intensity.
-    private float[] smoothing = new float[20];
+    private float[] smoothing = new float[1000];
 
     void Start()
     {
