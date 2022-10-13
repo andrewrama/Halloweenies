@@ -39,7 +39,14 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
+        if (CheckDist())
+        {
+            ShowButtonInst();
+        }
+        else
+        {
+            HideButtonInst();
+        }
     }
 
     public void OnScare(InputValue value)
@@ -70,6 +77,16 @@ public class Player : MonoBehaviour
         gamePauser.GetComponent<GameStateManager>().PauseGame();
     }
 
+    public void ShowButtonInst()
+    {
+        gamePauser.GetComponent<GameStateManager>().ShowDoorButton();
+    }
+
+    public void HideButtonInst()
+    {
+        gamePauser.GetComponent<GameStateManager>().HideDoorButton();
+    }
+
     public void CollectCandy()
     {
         Debug.Log("Candy Collected");
@@ -95,5 +112,12 @@ public class Player : MonoBehaviour
                 gameStateManager.GameWon();
                 break;
         }
+    }
+
+    bool CheckDist()
+    {
+        float dist = Mathf.Sqrt(Mathf.Pow(this.gameObject.transform.position.x - exitDoor.transform.position.x, 2) +
+            Mathf.Pow(this.gameObject.transform.position.z - exitDoor.transform.position.z, 2));
+        return dist < 3.0f;
     }
 }
