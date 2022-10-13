@@ -108,9 +108,6 @@ public class Player : MonoBehaviour
             case "Enemy": // Enemy (oh the misery)
                 gameStateManager.GameLost();
                 break;
-            case "EndDoor": // One does not simply walk into enddoor
-                gameStateManager.GameWon();
-                break;
         }
     }
 
