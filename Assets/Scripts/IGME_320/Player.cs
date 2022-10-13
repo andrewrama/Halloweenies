@@ -43,6 +43,10 @@ public class Player : MonoBehaviour
         {
             ShowButtonInst();
         }
+        else
+        {
+            HideButtonInst();
+        }
     }
 
     public void OnScare(InputValue value)
@@ -75,7 +79,12 @@ public class Player : MonoBehaviour
 
     public void ShowButtonInst()
     {
-        //gamePauser.GetComponent<GameStateManager>().PauseGame();
+        gamePauser.GetComponent<GameStateManager>().ShowDoorButton();
+    }
+
+    public void HideButtonInst()
+    {
+        gamePauser.GetComponent<GameStateManager>().HideDoorButton();
     }
 
     public void CollectCandy()

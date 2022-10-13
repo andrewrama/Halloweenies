@@ -10,6 +10,7 @@ public class GameStateManager : MonoBehaviour
     [SerializeField] private GameObject enemy;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject popUpButtonInstructions;
     [SerializeField] private Vector3[] enemySpawns;
 
 
@@ -61,7 +62,12 @@ public class GameStateManager : MonoBehaviour
 
     public void ShowDoorButton()
     {
-        // TO DO 
+        popUpButtonInstructions.SetActive(true);
+    }
+
+    public void HideDoorButton()
+    {
+        popUpButtonInstructions.SetActive(false);
     }
 
     void ResetGame()
