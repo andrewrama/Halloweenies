@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     public GameObject exitDoor;
     public GameObject gameStateManagerObject;
     GameStateManager gameStateManager;
+    public GameObject player;
 
     // Records if the player can scare or not
     bool canScare = false;
@@ -39,7 +40,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
+        if (CheckDist())
+        {
+            ShowButtonInst();
+        }
     }
 
     public void OnScare(InputValue value)
@@ -70,6 +74,11 @@ public class Player : MonoBehaviour
         gamePauser.GetComponent<GameStateManager>().PauseGame();
     }
 
+    public void ShowButtonInst()
+    {
+        //gamePauser.GetComponent<GameStateManager>().PauseGame();
+    }
+
     public void CollectCandy()
     {
         Debug.Log("Candy Collected");
@@ -95,5 +104,12 @@ public class Player : MonoBehaviour
                 gameStateManager.GameWon();
                 break;
         }
+    }
+
+    bool CheckDist()
+    {
+        float dist = Mathf.Sqrt(Mathf.Pow(player.transform.position.x - exitDoor.transform.position.x, 2) +
+            Mathf.Pow(player.transform.position.z - exitDoor.transform.position.z, 2));
+        return dist < 3.0f;
     }
 }

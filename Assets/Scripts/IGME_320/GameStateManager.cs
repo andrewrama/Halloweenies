@@ -59,6 +59,11 @@ public class GameStateManager : MonoBehaviour
         gameIsPaused = !gameIsPaused;
     }
 
+    public void ShowDoorButton()
+    {
+        // TO DO 
+    }
+
     void ResetGame()
     {
         Cursor.visible = false;
