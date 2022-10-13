@@ -25,7 +25,6 @@ public class Player : MonoBehaviour
     public GameObject exitDoor;
     public GameObject gameStateManagerObject;
     GameStateManager gameStateManager;
-    public GameObject player;
 
     // Records if the player can scare or not
     bool canScare = false;
@@ -108,8 +107,8 @@ public class Player : MonoBehaviour
 
     bool CheckDist()
     {
-        float dist = Mathf.Sqrt(Mathf.Pow(player.transform.position.x - exitDoor.transform.position.x, 2) +
-            Mathf.Pow(player.transform.position.z - exitDoor.transform.position.z, 2));
+        float dist = Mathf.Sqrt(Mathf.Pow(this.gameObject.transform.position.x - exitDoor.transform.position.x, 2) +
+            Mathf.Pow(this.gameObject.transform.position.z - exitDoor.transform.position.z, 2));
         return dist < 3.0f;
     }
 }
