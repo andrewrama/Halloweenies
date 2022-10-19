@@ -108,6 +108,17 @@ public class Player : MonoBehaviour
             case "Enemy": // Enemy (oh the misery)
                 gameStateManager.GameLost();
                 break;
+            case "Key": // Key
+                switch (other.gameObject.GetComponent<Key>().Type)
+                {
+                    case KeyType.End:
+                        // Open End door
+                        break;
+                    case KeyType.Basic:
+                        // Open a "generic" door
+                        break;
+                }
+                break;
         }
     }
 

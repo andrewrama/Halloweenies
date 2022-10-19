@@ -2,10 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum KeyType
+{
+    End,
+    Basic
+}
+
 public class Key : MonoBehaviour
 {
     // Reference to the player
     [SerializeField] private GameObject player;
+    public KeyType Type
+    {
+        get
+        {
+            return type;
+        }
+        set
+        {
+            type = value;
+        }
+    }
+    [SerializeField] private KeyType type;
     // Start is called before the first frame update
     void Start()
     {
