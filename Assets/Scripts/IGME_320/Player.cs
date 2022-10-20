@@ -17,7 +17,18 @@ public class Player : MonoBehaviour
             keys = value;
         }
     }
-    private int keys;
+    public bool HasEndKey
+    {
+        get
+        {
+            return hasEndKey;
+        }
+        set
+        {
+            hasEndKey = value;
+        }
+    }
+
     [SerializeField] private GameObject gamePauser;
 
     // Reference to the enemy
@@ -28,12 +39,15 @@ public class Player : MonoBehaviour
 
     // Records if the player can scare or not
     bool canScare = false;
+    private bool hasEndKey;
+    private int keys;
 
     // Start is called before the first frame update
     void Start()
     {
         gameStateManager = gameStateManagerObject.GetComponent<GameStateManager>();
         keys = 0;
+        hasEndKey = false;
     }
 
     // Update is called once per frame
@@ -69,7 +83,10 @@ public class Player : MonoBehaviour
     // Open the door (if it's close enough) 
     public void OnOpen(InputValue value)
     {
-        exitDoor.GetComponent<EndDoorScript>().OpenDoor();
+        if(hasEndKey)
+        {
+            exitDoor.GetComponent<EndDoorScript>().OpenDoor();
+        }
     }
 
     public void OnPause(InputValue value)
@@ -93,6 +110,22 @@ public class Player : MonoBehaviour
         canScare = true;
     }
 
+    public void CollectKey(KeyType keyType)
+    {
+        Debug.Log("Key Collected");
+        switch (keyType)
+        {
+            case KeyType.End:
+                // Open End door
+                hasEndKey = true;
+                break;
+            case KeyType.Basic:
+                // Open a "generic" door
+                ++keys;
+                break;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Collision detected");
@@ -109,15 +142,8 @@ public class Player : MonoBehaviour
                 gameStateManager.GameLost();
                 break;
             case "Key": // Key
-                switch (other.gameObject.GetComponent<Key>().Type)
-                {
-                    case KeyType.End:
-                        // Open End door
-                        break;
-                    case KeyType.Basic:
-                        // Open a "generic" door
-                        break;
-                }
+                CollectKey(other.gameObject.GetComponent<Key>().Type);
+                Destroy(other.gameObject);
                 break;
         }
     }
