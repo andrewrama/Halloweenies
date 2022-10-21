@@ -19,7 +19,6 @@ public class GameStateManager : MonoBehaviour
     void Start()
     {
         //Intialize Variables
-        enemySpawns = new Vector3[2] { new Vector3(30.0f, 0.0f, -28.0f), new Vector3(-30.0f, 0.0f, -28.0f) };
 
         ResetGame();
     }

@@ -1017,6 +1017,22 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 857523752}
   m_PrefabAsset: {fileID: 0}
+--- !u!208 &55393362
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55393356}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &55510886
 GameObject:
   m_ObjectHideFlags: 0
@@ -1976,6 +1992,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2690831032278625319, guid: b2d88bddef2b519479c35afe6a454acb,
         type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4.7936215
+      objectReference: {fileID: 0}
+    - target: {fileID: 2690831032278625319, guid: b2d88bddef2b519479c35afe6a454acb,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.16
       objectReference: {fileID: 0}
@@ -2032,6 +2053,22 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 175915491}
   m_PrefabAsset: {fileID: 0}
+--- !u!208 &175915498
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175915492}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &179689049
 GameObject:
   m_ObjectHideFlags: 0
@@ -2068,7 +2105,9 @@ MonoBehaviour:
   player: {fileID: 456309445}
   pauseMenu: {fileID: 2027175259}
   popUpButtonInstructions: {fileID: 1911560300}
-  enemySpawns: []
+  enemySpawns:
+  - {x: 32, y: 0, z: -12}
+  - {x: -25, y: 0, z: 3.5}
 --- !u!4 &179689051
 Transform:
   m_ObjectHideFlags: 0
@@ -5770,12 +5809,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 548971052}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &575630457 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2070925441746177671, guid: a1a802ecaf6775746bb2a929fb554ad8,
-    type: 3}
-  m_PrefabInstance: {fileID: 1374306665}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &583642520
 GameObject:
   m_ObjectHideFlags: 0
@@ -8477,7 +8510,7 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 575630457}
+      objectReference: {fileID: 456309445}
     - target: {fileID: 2690831032278625316, guid: b2d88bddef2b519479c35afe6a454acb,
         type: 3}
       propertyPath: gameManager
@@ -8491,7 +8524,12 @@ PrefabInstance:
     - target: {fileID: 2690831032278625319, guid: b2d88bddef2b519479c35afe6a454acb,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 4.2940326
+      value: 4.880168
+      objectReference: {fileID: 0}
+    - target: {fileID: 2690831032278625319, guid: b2d88bddef2b519479c35afe6a454acb,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4.1161017
       objectReference: {fileID: 0}
     - target: {fileID: 2690831032278625319, guid: b2d88bddef2b519479c35afe6a454acb,
         type: 3}
@@ -8506,7 +8544,7 @@ PrefabInstance:
     - target: {fileID: 2690831032278625319, guid: b2d88bddef2b519479c35afe6a454acb,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.194366
+      value: 10.58
       objectReference: {fileID: 0}
     - target: {fileID: 2690831032278625319, guid: b2d88bddef2b519479c35afe6a454acb,
         type: 3}
@@ -9521,6 +9559,22 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1062224713}
   m_PrefabAsset: {fileID: 0}
+--- !u!208 &1035947132
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035947126}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1036183747
 GameObject:
   m_ObjectHideFlags: 0
@@ -9769,12 +9823,12 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 179689049}
+      objectReference: {fileID: 456309445}
     - target: {fileID: 2690831032278625316, guid: b2d88bddef2b519479c35afe6a454acb,
         type: 3}
       propertyPath: gameManager
       value: 
-      objectReference: {fileID: 456309445}
+      objectReference: {fileID: 179689049}
     - target: {fileID: 2690831032278625319, guid: b2d88bddef2b519479c35afe6a454acb,
         type: 3}
       propertyPath: m_RootOrder
@@ -9782,8 +9836,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2690831032278625319, guid: b2d88bddef2b519479c35afe6a454acb,
         type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3.7480772
+      objectReference: {fileID: 0}
+    - target: {fileID: 2690831032278625319, guid: b2d88bddef2b519479c35afe6a454acb,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: -27.321255
+      value: -27.06
       objectReference: {fileID: 0}
     - target: {fileID: 2690831032278625319, guid: b2d88bddef2b519479c35afe6a454acb,
         type: 3}
@@ -11531,7 +11590,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 979aef027a1c86c42a15ce35fce366fa, type: 2}
+  - {fileID: 2100000, guid: 0b4c89da195a9744bb1d9106bd9baac0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
