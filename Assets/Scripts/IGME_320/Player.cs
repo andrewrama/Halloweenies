@@ -36,6 +36,8 @@ public class Player : MonoBehaviour
     public GameObject exitDoor;
     public GameObject gameStateManagerObject;
     GameStateManager gameStateManager;
+    [SerializeField] private GameObject[] doors;
+    private bool[] closedDoors;
 
     // Records if the player can scare or not
     bool canScare = false;
@@ -48,18 +50,53 @@ public class Player : MonoBehaviour
         gameStateManager = gameStateManagerObject.GetComponent<GameStateManager>();
         keys = 0;
         hasEndKey = false;
+        closedDoors = new bool[doors.Length];
+        for (int i = 0; i < closedDoors.Length; i++)
+        {
+            closedDoors[i] = true;
+        }
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (CheckDist())
+        if (CheckDist(exitDoor))
         {
-            ShowButtonInst();
+            if (hasEndKey)
+            {
+                ShowButtonInst("Press [E] to exit");
+            }
+            else
+            {
+                ShowButtonInst("Front door key required");
+            }
         }
         else
         {
-            HideButtonInst();
+            bool nearDoor = false;
+            for (int i = 0; i < doors.Length; i++)
+            {
+                if (closedDoors[i] && CheckDist(doors[i]))
+                {
+                    if (keys > 0)
+                    {
+                        Debug.Log("Keys");
+                        ShowButtonInst("Press [E] to unlock");
+                    }
+                    else
+                    {
+                        Debug.Log("No keys");
+                        ShowButtonInst("Key required");
+                    }
+                    nearDoor = true;
+                    Debug.Log("Near door");
+                    break;
+                }
+            }
+            if (!nearDoor)
+            {
+                HideButtonInst();
+            }
         }
     }
 
@@ -87,6 +124,18 @@ public class Player : MonoBehaviour
         {
             exitDoor.GetComponent<EndDoorScript>().OpenDoor();
         }
+        if (keys > 0)
+        {
+            for (int i = 0; i < doors.Length; i++)
+            {
+                if (closedDoors[i] && CheckDist(doors[i]))
+                {
+                    doors[i].GetComponent<BasicDoorScript>().OpenDoor();
+                    keys--;
+                    break;
+                }
+            }
+        }
     }
 
     public void OnPause(InputValue value)
@@ -94,9 +143,9 @@ public class Player : MonoBehaviour
         gamePauser.GetComponent<GameStateManager>().PauseGame();
     }
 
-    public void ShowButtonInst()
+    public void ShowButtonInst(string message)
     {
-        gamePauser.GetComponent<GameStateManager>().ShowDoorButton();
+        gamePauser.GetComponent<GameStateManager>().ShowDoorButton(message);
     }
 
     public void HideButtonInst()
@@ -148,10 +197,22 @@ public class Player : MonoBehaviour
         }
     }
 
-    bool CheckDist()
+    bool CheckDist(GameObject thing)
     {
-        float dist = Mathf.Sqrt(Mathf.Pow(this.gameObject.transform.position.x - exitDoor.transform.position.x, 2) +
-            Mathf.Pow(this.gameObject.transform.position.z - exitDoor.transform.position.z, 2));
+        float dist = Mathf.Sqrt(Mathf.Pow(this.gameObject.transform.position.x - thing.transform.position.x, 2) +
+            Mathf.Pow(this.gameObject.transform.position.z - thing.transform.position.z, 2));
         return dist < 3.0f;
+    }
+
+    public void removeDoor(GameObject openedDoor)
+    {
+        for (int i = 0; i < doors.Length; i++)
+        {
+            if (doors[i].Equals(openedDoor))
+            {
+                closedDoors[i] = false;
+                break;
+            }
+        }
     }
 }

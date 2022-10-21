@@ -9,6 +9,7 @@ TagManager:
   - Candy
   - EndDoor
   - Key
+  - BasicDoor
   layers:
   - Default
   - TransparentFX

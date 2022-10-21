@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameStateManager : MonoBehaviour
 {
@@ -60,9 +61,10 @@ public class GameStateManager : MonoBehaviour
         gameIsPaused = !gameIsPaused;
     }
 
-    public void ShowDoorButton()
+    public void ShowDoorButton(string message)
     {
         popUpButtonInstructions.SetActive(true);
+        popUpButtonInstructions.GetComponent<Text>().text = message;
     }
 
     public void HideDoorButton()
