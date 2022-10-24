@@ -6,15 +6,15 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     // Keys inventory
-    public int Keys
+    public int BasicKeys
     {
         get
         {
-            return keys;
+            return basicKeys;
         }
         set
         {
-            keys = value;
+            basicKeys = value;
         }
     }
     public bool HasEndKey
@@ -42,13 +42,13 @@ public class Player : MonoBehaviour
     // Records if the player can scare or not
     bool canScare = false;
     private bool hasEndKey;
-    private int keys;
+    private int basicKeys;
 
     // Start is called before the first frame update
     void Start()
     {
         gameStateManager = gameStateManagerObject.GetComponent<GameStateManager>();
-        keys = 0;
+        basicKeys = 0;
         hasEndKey = false;
         closedDoors = new bool[doors.Length];
         for (int i = 0; i < closedDoors.Length; i++)
@@ -78,14 +78,14 @@ public class Player : MonoBehaviour
             {
                 if (closedDoors[i] && CheckDist(doors[i]))
                 {
-                    if (keys > 0)
+                    if (basicKeys > 0)
                     {
                         Debug.Log("Keys");
                         ShowButtonInst("Press [E] to unlock");
                     }
                     else
                     {
-                        Debug.Log("No keys");
+                        Debug.Log("No basicKeys");
                         ShowButtonInst("Key required");
                     }
                     nearDoor = true;
@@ -124,14 +124,13 @@ public class Player : MonoBehaviour
         {
             exitDoor.GetComponent<EndDoorScript>().OpenDoor();
         }
-        if (keys > 0)
+        if (basicKeys > 0)
         {
             for (int i = 0; i < doors.Length; i++)
             {
                 if (closedDoors[i] && CheckDist(doors[i]))
                 {
                     doors[i].GetComponent<BasicDoorScript>().OpenDoor();
-                    keys--;
                     break;
                 }
             }
@@ -170,7 +169,7 @@ public class Player : MonoBehaviour
                 break;
             case KeyType.Basic:
                 // Open a "generic" door
-                ++keys;
+                ++basicKeys;
                 break;
         }
     }
