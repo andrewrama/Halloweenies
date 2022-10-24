@@ -11,6 +11,9 @@ public class Monster : MonoBehaviour
     public NavMeshAgent agent; // Reference to the agent component
     public GameObject player; // Reference to the player
 
+    public GameObject angryEyebrows;
+    public GameObject scaredEyebrows;
+
     // Fear variables
     bool scared = false; // If they are afraid and running away from the player
     int scaredTimer = 0; // Keeps track of how many fixedUpdate()s until its not scared anymore
@@ -25,6 +28,10 @@ public class Monster : MonoBehaviour
     {
         // Record the original speed of the agent
         originalSpeed = agent.speed;
+
+        // Start with only the angry eyebrows visible
+        angryEyebrows.SetActive(true);
+        scaredEyebrows.SetActive(false);
     }
 
     // Update is called once per frame
@@ -60,6 +67,8 @@ public class Monster : MonoBehaviour
         {
             agent.speed = originalSpeed;
             scared = false;
+            angryEyebrows.SetActive(true);
+            scaredEyebrows.SetActive(false);
             Debug.Log("Monster no longer scared");
         }
     }
@@ -70,6 +79,8 @@ public class Monster : MonoBehaviour
         scaredTimer = SCARED_TIME;
         scared = true;
         agent.speed = 0;
+        angryEyebrows.SetActive(false);
+        scaredEyebrows.SetActive(true);
         Debug.Log("Monster scared");
     }
 }
