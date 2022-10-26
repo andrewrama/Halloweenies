@@ -51,6 +51,9 @@ public class Player : MonoBehaviour
     private bool hasEndKey;
     private int basicKeys;
 
+    // Scare Sounds
+    public AudioClip[] scareSounds;
+
     // Start is called before the first frame update
     void Start()
     {

@@ -23,6 +23,10 @@ public class Monster : MonoBehaviour
     float originalSpeed; // Records the original speed of the monster to be set back once its no longer scared
     public const float SCARED_SPEED = 0.2f; // Should be very small
 
+    // Audio Clips
+    public AudioClip[] scaredSounds;
+    public AudioClip[] roamingSounds;
+
     // Start is called before the first frame update
     void Start()
     {

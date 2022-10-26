@@ -19880,6 +19880,46 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 456309445}
+    - target: {fileID: 8280404079079264453, guid: d118e3d92456c0d4ebde42339c72f069,
+        type: 3}
+      propertyPath: scaredSounds.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8280404079079264453, guid: d118e3d92456c0d4ebde42339c72f069,
+        type: 3}
+      propertyPath: roamingSounds.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8280404079079264453, guid: d118e3d92456c0d4ebde42339c72f069,
+        type: 3}
+      propertyPath: scaredSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: bf549920cd3784643abacd1ede6207ba, type: 3}
+    - target: {fileID: 8280404079079264453, guid: d118e3d92456c0d4ebde42339c72f069,
+        type: 3}
+      propertyPath: scaredSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: f4ca6a3d3c6dbd34cbd0f7bdd440fc33, type: 3}
+    - target: {fileID: 8280404079079264453, guid: d118e3d92456c0d4ebde42339c72f069,
+        type: 3}
+      propertyPath: scaredSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: fb5bbecbf83b4894b9449438cb718ef7, type: 3}
+    - target: {fileID: 8280404079079264453, guid: d118e3d92456c0d4ebde42339c72f069,
+        type: 3}
+      propertyPath: roamingSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: ff3119c1d06614645aa1aa0e66b50ea8, type: 3}
+    - target: {fileID: 8280404079079264453, guid: d118e3d92456c0d4ebde42339c72f069,
+        type: 3}
+      propertyPath: roamingSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 7567c9ecc73f42f45998d6c5ca9be0ba, type: 3}
+    - target: {fileID: 8280404079079264453, guid: d118e3d92456c0d4ebde42339c72f069,
+        type: 3}
+      propertyPath: roamingSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3cbfac696b3e5af458e40c218a4a71f7, type: 3}
     - target: {fileID: 8280404079079264474, guid: d118e3d92456c0d4ebde42339c72f069,
         type: 3}
       propertyPath: m_Name
