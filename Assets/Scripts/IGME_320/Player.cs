@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -31,13 +32,19 @@ public class Player : MonoBehaviour
 
     [SerializeField] private GameObject gamePauser;
 
-    // Reference to the enemy
+    // Reference to game objects
     public GameObject enemy;
     public GameObject exitDoor;
     public GameObject gameStateManagerObject;
     GameStateManager gameStateManager;
     [SerializeField] private GameObject[] doors;
     private bool[] closedDoors;
+
+    // HUD
+    public GameObject scareTextObject;
+    Text scareText;
+    string scareTextAvailable;
+    string scareTextNotAvailable;
 
     // Records if the player can scare or not
     bool canScare = false;
@@ -55,6 +62,11 @@ public class Player : MonoBehaviour
         {
             closedDoors[i] = true;
         }
+
+        // Save the default scare text
+        scareText = scareTextObject.GetComponent<Text>();
+        scareTextNotAvailable = scareText.text;
+        scareTextAvailable = "Scare: READY (Press Spacebar!)";
     }
 
     // Update is called once per frame
@@ -110,6 +122,9 @@ public class Player : MonoBehaviour
 
             // Remove their ability to scare
             canScare = false;
+
+            // Update the text
+            scareText.text = scareTextNotAvailable;
         }
         else
         {
@@ -156,6 +171,7 @@ public class Player : MonoBehaviour
     {
         Debug.Log("Candy Collected");
         canScare = true;
+        scareText.text = scareTextAvailable;
     }
 
     public void CollectKey(KeyType keyType)
@@ -183,8 +199,12 @@ public class Player : MonoBehaviour
 
         switch (tag) {
             case "Candy": // Candy
-                CollectCandy();
-                Destroy(other.gameObject);
+                // Only trigger code if they don't already have a candy
+                if (!canScare) // They can't scare yet so the code should trigger
+                {
+                    CollectCandy();
+                    Destroy(other.gameObject);
+                }
                 break;
             case "Enemy": // Enemy (oh the misery)
                 gameStateManager.GameLost();
