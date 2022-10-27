@@ -10,6 +10,7 @@ public class Monster : MonoBehaviour
     // References
     public NavMeshAgent agent; // Reference to the agent component
     public GameObject player; // Reference to the player
+    public GameObject enemy;
 
     public GameObject angryEyebrows;
     public GameObject scaredEyebrows;
@@ -23,9 +24,11 @@ public class Monster : MonoBehaviour
     float originalSpeed; // Records the original speed of the monster to be set back once its no longer scared
     public const float SCARED_SPEED = 0.2f; // Should be very small
 
-    // Audio Clips
+    // Audio
     public AudioClip[] scaredSounds;
     public AudioClip[] roamingSounds;
+    public AudioClip walkingSound;
+    AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +39,8 @@ public class Monster : MonoBehaviour
         // Start with only the angry eyebrows visible
         angryEyebrows.SetActive(true);
         scaredEyebrows.SetActive(false);
+
+        audioSource = enemy.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -73,6 +78,9 @@ public class Monster : MonoBehaviour
             scared = false;
             angryEyebrows.SetActive(true);
             scaredEyebrows.SetActive(false);
+            audioSource.clip = walkingSound;
+            audioSource.loop = true;
+            audioSource.Play();
             Debug.Log("Monster no longer scared");
         }
     }
@@ -85,6 +93,13 @@ public class Monster : MonoBehaviour
         agent.speed = 0;
         angryEyebrows.SetActive(false);
         scaredEyebrows.SetActive(true);
+
+        // Play scared sound
+        audioSource.clip = scaredSounds[Random.Range(0, 3)];
+        audioSource.loop = false;
+        audioSource.Play();
+
+
         Debug.Log("Monster scared");
     }
 }
