@@ -29,6 +29,8 @@ public class Monster : MonoBehaviour
     public AudioClip[] roamingSounds;
     public AudioClip walkingSound;
     AudioSource audioSource;
+    const int ROAMING_NOISE_TIME = 300;
+    int noiseTimer = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +49,7 @@ public class Monster : MonoBehaviour
     void FixedUpdate()
     {
         UpdateScared();
+        UpdateRoamAudio();
         Move();
     }
 
@@ -56,6 +59,7 @@ public class Monster : MonoBehaviour
         if (!scared) // They are not scared of the player and should be moving towards them
         {
             agent.SetDestination(player.transform.position);
+            PlayWalkingSound();
         }
         else // They are scared of the player and should be moving away from them
         {
@@ -78,10 +82,37 @@ public class Monster : MonoBehaviour
             scared = false;
             angryEyebrows.SetActive(true);
             scaredEyebrows.SetActive(false);
+            Debug.Log("Monster no longer scared");
+        }
+    }
+
+    void UpdateRoamAudio()
+    {
+        if(!scared && noiseTimer > 0)
+        {
+            noiseTimer -= 1;
+        }
+        else if(noiseTimer == 0)
+        {
+            PlayRoamAudio();
+        }
+    }
+
+    void PlayRoamAudio()
+    {
+        audioSource.clip = roamingSounds[Random.Range(0, 3)];
+        audioSource.loop = false;
+        audioSource.Play();
+        noiseTimer = ROAMING_NOISE_TIME;
+    }
+
+    void PlayWalkingSound()
+    {
+        if (!audioSource.isPlaying)
+        {
             audioSource.clip = walkingSound;
             audioSource.loop = true;
             audioSource.Play();
-            Debug.Log("Monster no longer scared");
         }
     }
 
