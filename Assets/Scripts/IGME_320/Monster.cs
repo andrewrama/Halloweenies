@@ -42,7 +42,7 @@ public class Monster : MonoBehaviour
         angryEyebrows.SetActive(true);
         scaredEyebrows.SetActive(false);
 
-        audioSource = enemy.GetComponent<AudioSource>();
+        audioSource = enemy.GetComponents<AudioSource>()[0];
     }
 
     // Update is called once per frame
@@ -59,7 +59,7 @@ public class Monster : MonoBehaviour
         if (!scared) // They are not scared of the player and should be moving towards them
         {
             agent.SetDestination(player.transform.position);
-            PlayWalkingSound();
+            //PlayWalkingSound();
         }
         else // They are scared of the player and should be moving away from them
         {
@@ -106,15 +106,15 @@ public class Monster : MonoBehaviour
         noiseTimer = ROAMING_NOISE_TIME;
     }
 
-    void PlayWalkingSound()
-    {
-        if (!audioSource.isPlaying)
-        {
-            audioSource.clip = walkingSound;
-            audioSource.loop = true;
-            audioSource.Play();
-        }
-    }
+    //void PlayWalkingSound()
+    //{
+    //    if (!audioSource.isPlaying)
+    //    {
+    //        audioSource.clip = walkingSound;
+    //        audioSource.loop = true;
+    //        audioSource.Play();
+    //    }
+    //}
 
     public void Spook()
     {
