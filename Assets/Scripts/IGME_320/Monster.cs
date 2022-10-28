@@ -10,6 +10,7 @@ public class Monster : MonoBehaviour
     // References
     public NavMeshAgent agent; // Reference to the agent component
     public GameObject player; // Reference to the player
+    public GameObject enemy;
 
     public GameObject angryEyebrows;
     public GameObject scaredEyebrows;
@@ -23,6 +24,14 @@ public class Monster : MonoBehaviour
     float originalSpeed; // Records the original speed of the monster to be set back once its no longer scared
     public const float SCARED_SPEED = 0.2f; // Should be very small
 
+    // Audio
+    public AudioClip[] scaredSounds;
+    public AudioClip[] roamingSounds;
+    public AudioClip walkingSound;
+    AudioSource audioSource;
+    const int ROAMING_NOISE_TIME = 300;
+    int noiseTimer = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,12 +41,15 @@ public class Monster : MonoBehaviour
         // Start with only the angry eyebrows visible
         angryEyebrows.SetActive(true);
         scaredEyebrows.SetActive(false);
+
+        audioSource = enemy.GetComponents<AudioSource>()[0];
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         UpdateScared();
+        UpdateRoamAudio();
         Move();
     }
 
@@ -47,6 +59,7 @@ public class Monster : MonoBehaviour
         if (!scared) // They are not scared of the player and should be moving towards them
         {
             agent.SetDestination(player.transform.position);
+            //PlayWalkingSound();
         }
         else // They are scared of the player and should be moving away from them
         {
@@ -73,6 +86,36 @@ public class Monster : MonoBehaviour
         }
     }
 
+    void UpdateRoamAudio()
+    {
+        if(!scared && noiseTimer > 0)
+        {
+            noiseTimer -= 1;
+        }
+        else if(noiseTimer == 0)
+        {
+            PlayRoamAudio();
+        }
+    }
+
+    void PlayRoamAudio()
+    {
+        audioSource.clip = roamingSounds[Random.Range(0, 3)];
+        audioSource.loop = false;
+        audioSource.Play();
+        noiseTimer = ROAMING_NOISE_TIME;
+    }
+
+    //void PlayWalkingSound()
+    //{
+    //    if (!audioSource.isPlaying)
+    //    {
+    //        audioSource.clip = walkingSound;
+    //        audioSource.loop = true;
+    //        audioSource.Play();
+    //    }
+    //}
+
     public void Spook()
     {
         directionAwayFromPlayer = (transform.position - player.transform.position).normalized;
@@ -81,6 +124,13 @@ public class Monster : MonoBehaviour
         agent.speed = 0;
         angryEyebrows.SetActive(false);
         scaredEyebrows.SetActive(true);
+
+        // Play scared sound
+        audioSource.clip = scaredSounds[Random.Range(0, 3)];
+        audioSource.loop = false;
+        audioSource.Play();
+
+
         Debug.Log("Monster scared");
     }
 }

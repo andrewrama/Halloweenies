@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
 
     // Reference to game objects
     public GameObject enemy;
+    public GameObject player;
     public GameObject exitDoor;
     public GameObject gameStateManagerObject;
     GameStateManager gameStateManager;
@@ -51,6 +52,10 @@ public class Player : MonoBehaviour
     private bool hasEndKey;
     private int basicKeys;
 
+    // Scare Sounds
+    public AudioClip[] scareSounds;
+    AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,6 +67,8 @@ public class Player : MonoBehaviour
         {
             closedDoors[i] = true;
         }
+
+        audioSource = player.GetComponent<AudioSource>();
 
         // Save the default scare text
         scareText = scareTextObject.GetComponent<Text>();
@@ -119,6 +126,9 @@ public class Player : MonoBehaviour
         {
             // Scare the enemy
             enemy.GetComponent<Monster>().Spook();
+
+            audioSource.clip = scareSounds[Random.Range(0, 2)];
+            audioSource.Play();
 
             // Remove their ability to scare
             canScare = false;
