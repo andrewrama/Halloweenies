@@ -356,7 +356,7 @@ RectTransform:
   m_GameObject: {fileID: 1007517661}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.522995, y: 2.522995, z: 2.522995}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1224459959}
@@ -365,7 +365,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 28, y: -162}
+  m_AnchoredPosition: {x: 28, y: -479}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1007517663
@@ -802,7 +802,7 @@ RectTransform:
   m_GameObject: {fileID: 1938584800}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.69877845, y: 0.46848932, z: 0.45512828}
+  m_LocalScale: {x: 1.0883069, y: 0.7296449, z: 0.70883584}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 79712335}
@@ -810,7 +810,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14, y: 168}
+  m_AnchoredPosition: {x: 14, y: 423}
   m_SizeDelta: {x: 600, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1938584802
@@ -882,7 +882,7 @@ RectTransform:
   m_GameObject: {fileID: 1950341220}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.666996, y: 0.47456968, z: 0.4975583}
+  m_LocalScale: {x: 1.2525873, y: 1.2525873, z: 1.2525873}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 79712335}
@@ -890,7 +890,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: -6}
+  m_AnchoredPosition: {x: -8, y: -47}
   m_SizeDelta: {x: 1300, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1950341222
@@ -929,13 +929,15 @@ MonoBehaviour:
   m_Text: "Goal:\n\n\t*  Traverse through the maze while avoiding getting caught
     by the monster that will \n\t\tbe continuously following you through the maze.
     Your goal is to find the door at the end \n        of the maze!\n\nInstructions\n\n\t* 
-    Use the \u201CWASD\u201D keys to move around the maze\n\n\t*  Collect a candy
-    scattered throughout the map to gain the ability to scare. \n\t\tAfter you use
-    the scare, you must collect another candy to do it again.\n\n\t*  Use the [Spacebar]
+    Use the \u201CWASD\u201D keys to move around the maze\n\n\t*  Collect candy scattered
+    throughout the map to gain the ability to scare. After you use the \n       
+    scare, you must collect another candy to do it again.\n\n\t*  Use the [Spacebar]
     to scare away the monster, this will make the monster run away from   \t\n\t\tyou
-    for 5 seconds.\n\n\t*  The door is big and blue and can be found at the end of
-    the maze, press [E] to open it and \n        win game\n\n\t*  Press [P] to Pause
-    the game \n\n"
+    for 5 seconds.\n\n\t*  You must collect keys in order to open the doors scattered
+    through the map. There are 2 \n        keys, the yellow key will unlock the first
+    set of doors and the green key will unlcok the end \n        door.\n\n\t*  The
+    end door can be found at the end of the maze, press [E] to open it and \n       
+    win game\n\n\t*  Press [P] to Pause the game \n\n"
 --- !u!222 &1950341223
 CanvasRenderer:
   m_ObjectHideFlags: 0
