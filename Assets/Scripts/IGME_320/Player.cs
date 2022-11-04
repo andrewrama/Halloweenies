@@ -46,6 +46,8 @@ public class Player : MonoBehaviour
     Text scareText;
     string scareTextAvailable;
     string scareTextNotAvailable;
+    [SerializeField] private HUDManager HUD;
+
 
     // Records if the player can scare or not
     bool canScare = false;
@@ -135,6 +137,9 @@ public class Player : MonoBehaviour
 
             // Update the text
             scareText.text = scareTextNotAvailable;
+
+            //Change candy display in HUD
+            HUD.SetCandyInvisible();
         }
         else
         {
@@ -182,6 +187,9 @@ public class Player : MonoBehaviour
         Debug.Log("Candy Collected");
         canScare = true;
         scareText.text = scareTextAvailable;
+
+        //Change candy display in HUD
+        HUD.SetCandyVisible();
     }
 
     public void CollectKey(KeyType keyType)
@@ -190,10 +198,16 @@ public class Player : MonoBehaviour
         switch (keyType)
         {
             case KeyType.End:
+                // Update HUD
+                HUD.SetKeyVisible(-1);
+
                 // Open End door
                 hasEndKey = true;
                 break;
             case KeyType.Basic:
+                //Update HUD
+                HUD.SetKeyVisible(basicKeys);
+
                 // Open a "generic" door
                 ++basicKeys;
                 break;
