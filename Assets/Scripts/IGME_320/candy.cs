@@ -7,7 +7,10 @@ public class candy : MonoBehaviour
     bool collected = false;
     int rechargeTimer = 0;
     const int RECHARGE_TIME = 900; // 900 fixed updates which is 15 seconds
+    
     MeshRenderer meshRenderer;
+    Material opaqueMaterial;
+    public Material transparentMaterial;
 
     // Reference to the player
     private GameObject player;
@@ -16,6 +19,7 @@ public class candy : MonoBehaviour
     {
         player = GameObject.Find("PlayerArmature");
         meshRenderer = gameObject.GetComponent<MeshRenderer>();
+        opaqueMaterial = meshRenderer.material;
     }
 
     // Update is called once per frame
@@ -35,16 +39,21 @@ public class candy : MonoBehaviour
         {
             // Respawn
             collected = false;
-            meshRenderer.enabled = true;
-            //ChangeTransparency(1);
+            //meshRenderer.enabled = true;
+            ChangeTransparency(false);
         }
     }
 
-    void ChangeTransparency(float a)
+    void ChangeTransparency(bool transparent)
     {
-        Color color = meshRenderer.material.color;
-        color.a = a;
-        meshRenderer.material.color = color;
+        if (transparent) // Switch it to transparent
+        {
+            meshRenderer.material = transparentMaterial;
+        }
+        else // Switch it back to opaque
+        {
+            meshRenderer.material = opaqueMaterial;
+        }
     }
 
     // Called when the player walks into the candy
@@ -56,8 +65,8 @@ public class candy : MonoBehaviour
         {
             collected = true;
             rechargeTimer = RECHARGE_TIME;
-            meshRenderer.enabled = false;
-            //ChangeTransparency(0);
+            //meshRenderer.enabled = false;
+            ChangeTransparency(true);
             return true;
         }
         return false;

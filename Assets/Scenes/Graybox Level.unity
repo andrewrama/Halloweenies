@@ -14027,6 +14027,17 @@ PrefabInstance:
       propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1015894649698773720, guid: 8f4b45b27a15fa64c9da97c0bf8a155d,
+        type: 3}
+      propertyPath: material
+      value: 
+      objectReference: {fileID: 8748892135801146194, guid: a86739364ac98784f81e3b8e6c57b5df,
+        type: 3}
+    - target: {fileID: 2819091032978529899, guid: 8f4b45b27a15fa64c9da97c0bf8a155d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2819091032978529899, guid: 8f4b45b27a15fa64c9da97c0bf8a155d,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
