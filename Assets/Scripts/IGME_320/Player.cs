@@ -226,8 +226,11 @@ public class Player : MonoBehaviour
                 // Only trigger code if they don't already have a candy
                 if (!canScare) // They can't scare yet so the code should trigger
                 {
-                    CollectCandy();
-                    Destroy(other.gameObject);
+                    // Make sure you can collect it (its not currently recharging)
+                    if (other.gameObject.GetComponent<candy>().Collect()) // You can collect it!
+                    {
+                        CollectCandy();
+                    }
                 }
                 break;
             case "Enemy": // Enemy (oh the misery)
