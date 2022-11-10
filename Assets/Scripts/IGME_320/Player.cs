@@ -127,7 +127,7 @@ public class Player : MonoBehaviour
         if (canScare) // They can scare
         {
             // Scare the enemy
-            enemy.GetComponent<Monster>().Spook();
+            enemy.GetComponent<Monster>().Spook(GetDist(enemy));
 
             audioSource.clip = scareSounds[Random.Range(0, 2)];
             audioSource.Play();
@@ -245,9 +245,13 @@ public class Player : MonoBehaviour
 
     bool CheckDist(GameObject thing)
     {
-        float dist = Mathf.Sqrt(Mathf.Pow(this.gameObject.transform.position.x - thing.transform.position.x, 2) +
+        return GetDist(thing) < 3.0f;
+    }
+
+    float GetDist(GameObject thing)
+    {
+        return Mathf.Sqrt(Mathf.Pow(this.gameObject.transform.position.x - thing.transform.position.x, 2) +
             Mathf.Pow(this.gameObject.transform.position.z - thing.transform.position.z, 2));
-        return dist < 3.0f;
     }
 
     public void removeDoor(GameObject openedDoor)
