@@ -38,8 +38,12 @@ public class Player : MonoBehaviour
     public GameObject exitDoor;
     public GameObject gameStateManagerObject;
     GameStateManager gameStateManager;
-    [SerializeField] private GameObject[] doors;
-    private bool[] closedDoors;
+    [SerializeField] private GameObject[] doorsTier1;
+    private bool[] closedDoorsTier1;
+    [SerializeField] private GameObject[] doorsTier2;
+    private bool[] closedDoorsTier2;
+    [SerializeField] private GameObject[] doorsTier3;
+    private bool[] closedDoorsTier3;
 
     // HUD
     public GameObject scareTextObject;
@@ -64,10 +68,22 @@ public class Player : MonoBehaviour
         gameStateManager = gameStateManagerObject.GetComponent<GameStateManager>();
         basicKeys = 0;
         hasEndKey = false;
-        closedDoors = new bool[doors.Length];
-        for (int i = 0; i < closedDoors.Length; i++)
+        closedDoorsTier1 = new bool[doorsTier1.Length];
+        for (int i = 0; i < closedDoorsTier1.Length; i++)
         {
-            closedDoors[i] = true;
+            closedDoorsTier1[i] = true;
+        }
+
+        closedDoorsTier2 = new bool[doorsTier2.Length];
+        for (int i = 0; i < closedDoorsTier2.Length; i++)
+        {
+            closedDoorsTier2[i] = true;
+        }
+
+        closedDoorsTier3 = new bool[doorsTier3.Length];
+        for (int i = 0; i < closedDoorsTier3.Length; i++)
+        {
+            closedDoorsTier3[i] = true;
         }
 
         audioSource = player.GetComponent<AudioSource>();
@@ -95,11 +111,11 @@ public class Player : MonoBehaviour
         else
         {
             bool nearDoor = false;
-            for (int i = 0; i < doors.Length; i++)
+            for (int i = 0; i < doorsTier1.Length; i++)
             {
-                if (closedDoors[i] && CheckDist(doors[i]))
+                if (closedDoorsTier1[i] && CheckDist(doorsTier1[i]))
                 {
-                    if (basicKeys > 0)
+                    if (basicKeys >= 1)
                     {
                         Debug.Log("Keys");
                         ShowButtonInst("Press [E] to unlock");
@@ -107,10 +123,48 @@ public class Player : MonoBehaviour
                     else
                     {
                         Debug.Log("No basicKeys");
-                        ShowButtonInst("Key required");
+                        ShowButtonInst("Circle Key required");
                     }
                     nearDoor = true;
-                    Debug.Log("Near door");
+                    Debug.Log("Near circle door");
+                    break;
+                }
+            }
+            for (int i = 0; i < doorsTier2.Length; i++)
+            {
+                if (closedDoorsTier2[i] && CheckDist(doorsTier2[i]))
+                {
+                    if (basicKeys >= 2)
+                    {
+                        Debug.Log("Keys");
+                        ShowButtonInst("Press [E] to unlock");
+                    }
+                    else
+                    {
+                        Debug.Log("Not enough basicKeys");
+                        ShowButtonInst("Triangle Key required");
+                    }
+                    nearDoor = true;
+                    Debug.Log("Near triangle door");
+                    break;
+                }
+            }
+            for (int i = 0; i < doorsTier3.Length; i++)
+            {
+                if (closedDoorsTier3[i] && CheckDist(doorsTier3[i]))
+                {
+                    if (basicKeys >= 3)
+                    {
+                        Debug.Log("Keys");
+                        ShowButtonInst("Press [E] to unlock");
+                    }
+                    else
+                    {
+                        Debug.Log("Not enough basicKeys");
+                        ShowButtonInst("Square Key required");
+                    }
+                    nearDoor = true;
+                    Debug.Log("Near square door");
                     break;
                 }
             }
@@ -127,7 +181,7 @@ public class Player : MonoBehaviour
         if (canScare) // They can scare
         {
             // Scare the enemy
-            enemy.GetComponent<Monster>().Spook();
+            enemy.GetComponent<Monster>().Spook(GetDist(enemy));
 
             audioSource.clip = scareSounds[Random.Range(0, 2)];
             audioSource.Play();
@@ -154,13 +208,35 @@ public class Player : MonoBehaviour
         {
             exitDoor.GetComponent<EndDoorScript>().OpenDoor();
         }
-        if (basicKeys > 0)
+        if (basicKeys >= 1)
         {
-            for (int i = 0; i < doors.Length; i++)
+            for (int i = 0; i < doorsTier1.Length; i++)
             {
-                if (closedDoors[i] && CheckDist(doors[i]))
+                if (closedDoorsTier1[i] && CheckDist(doorsTier1[i]))
                 {
-                    doors[i].GetComponent<BasicDoorScript>().OpenDoor();
+                    doorsTier1[i].GetComponent<BasicDoorScript>().OpenDoor();
+                    break;
+                }
+            }
+        }
+        if (basicKeys >= 2)
+        {
+            for (int i = 0; i < doorsTier2.Length; i++)
+            {
+                if (closedDoorsTier2[i] && CheckDist(doorsTier2[i]))
+                {
+                    doorsTier2[i].GetComponent<BasicDoorScript>().OpenDoor();
+                    break;
+                }
+            }
+        }
+        if (basicKeys >= 3)
+        {
+            for (int i = 0; i < doorsTier3.Length; i++)
+            {
+                if (closedDoorsTier3[i] && CheckDist(doorsTier3[i]))
+                {
+                    doorsTier3[i].GetComponent<BasicDoorScript>().OpenDoor();
                     break;
                 }
             }
@@ -245,18 +321,38 @@ public class Player : MonoBehaviour
 
     bool CheckDist(GameObject thing)
     {
-        float dist = Mathf.Sqrt(Mathf.Pow(this.gameObject.transform.position.x - thing.transform.position.x, 2) +
+        return GetDist(thing) < 3.0f;
+    }
+
+    float GetDist(GameObject thing)
+    {
+        return Mathf.Sqrt(Mathf.Pow(this.gameObject.transform.position.x - thing.transform.position.x, 2) +
             Mathf.Pow(this.gameObject.transform.position.z - thing.transform.position.z, 2));
-        return dist < 3.0f;
     }
 
     public void removeDoor(GameObject openedDoor)
     {
-        for (int i = 0; i < doors.Length; i++)
+        for (int i = 0; i < doorsTier1.Length; i++)
         {
-            if (doors[i].Equals(openedDoor))
+            if (doorsTier1[i].Equals(openedDoor))
             {
-                closedDoors[i] = false;
+                closedDoorsTier1[i] = false;
+                break;
+            }
+        }
+        for (int i = 0; i < doorsTier2.Length; i++)
+        {
+            if (doorsTier2[i].Equals(openedDoor))
+            {
+                closedDoorsTier2[i] = false;
+                break;
+            }
+        }
+        for (int i = 0; i < doorsTier3.Length; i++)
+        {
+            if (doorsTier3[i].Equals(openedDoor))
+            {
+                closedDoorsTier3[i] = false;
                 break;
             }
         }
