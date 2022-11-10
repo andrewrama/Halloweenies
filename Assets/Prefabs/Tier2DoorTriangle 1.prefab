@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2690831032278625316}
   - component: {fileID: 4340185400915806561}
   m_Layer: 0
-  m_Name: Tier2DoorTriangle
+  m_Name: Tier2DoorTriangle 1
   m_TagString: BasicDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

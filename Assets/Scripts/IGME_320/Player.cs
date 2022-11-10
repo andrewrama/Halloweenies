@@ -316,10 +316,6 @@ public class Player : MonoBehaviour
                 CollectKey(other.gameObject.GetComponent<Key>().Type);
                 Destroy(other.gameObject);
                 break;
-            case "Door": // For tiered doors
-                
-                break;
-
         }
     }
 
@@ -337,6 +333,22 @@ public class Player : MonoBehaviour
             if (doorsTier1[i].Equals(openedDoor))
             {
                 closedDoorsTier1[i] = false;
+                break;
+            }
+        }
+        for (int i = 0; i < doorsTier2.Length; i++)
+        {
+            if (doorsTier2[i].Equals(openedDoor))
+            {
+                closedDoorsTier2[i] = false;
+                break;
+            }
+        }
+        for (int i = 0; i < doorsTier3.Length; i++)
+        {
+            if (doorsTier3[i].Equals(openedDoor))
+            {
+                closedDoorsTier3[i] = false;
                 break;
             }
         }
