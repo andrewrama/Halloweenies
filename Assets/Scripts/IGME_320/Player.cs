@@ -42,8 +42,6 @@ public class Player : MonoBehaviour
     private bool[] closedDoorsTier1;
     [SerializeField] private GameObject[] doorsTier2;
     private bool[] closedDoorsTier2;
-    [SerializeField] private GameObject[] doorsTier3;
-    private bool[] closedDoorsTier3;
 
     // HUD
     public GameObject scareTextObject;
@@ -80,11 +78,6 @@ public class Player : MonoBehaviour
             closedDoorsTier2[i] = true;
         }
 
-        closedDoorsTier3 = new bool[doorsTier3.Length];
-        for (int i = 0; i < closedDoorsTier3.Length; i++)
-        {
-            closedDoorsTier3[i] = true;
-        }
 
         audioSource = player.GetComponent<AudioSource>();
 
@@ -149,25 +142,7 @@ public class Player : MonoBehaviour
                     break;
                 }
             }
-            for (int i = 0; i < doorsTier3.Length; i++)
-            {
-                if (closedDoorsTier3[i] && CheckDist(doorsTier3[i]))
-                {
-                    if (basicKeys >= 3)
-                    {
-                        Debug.Log("Keys");
-                        ShowButtonInst("Press [E] to unlock");
-                    }
-                    else
-                    {
-                        Debug.Log("Not enough basicKeys");
-                        ShowButtonInst("Square Key required");
-                    }
-                    nearDoor = true;
-                    Debug.Log("Near square door");
-                    break;
-                }
-            }
+
             if (!nearDoor)
             {
                 HideButtonInst();
@@ -230,17 +205,7 @@ public class Player : MonoBehaviour
                 }
             }
         }
-        if (basicKeys >= 3)
-        {
-            for (int i = 0; i < doorsTier3.Length; i++)
-            {
-                if (closedDoorsTier3[i] && CheckDist(doorsTier3[i]))
-                {
-                    doorsTier3[i].GetComponent<BasicDoorScript>().OpenDoor();
-                    break;
-                }
-            }
-        }
+
     }
 
     public void OnPause(InputValue value)
@@ -345,14 +310,6 @@ public class Player : MonoBehaviour
             if (doorsTier2[i].Equals(openedDoor))
             {
                 closedDoorsTier2[i] = false;
-                break;
-            }
-        }
-        for (int i = 0; i < doorsTier3.Length; i++)
-        {
-            if (doorsTier3[i].Equals(openedDoor))
-            {
-                closedDoorsTier3[i] = false;
                 break;
             }
         }
