@@ -5657,10 +5657,12 @@ MonoBehaviour:
   player: {fileID: 456309445}
   exitDoor: {fileID: 1940938311}
   gameStateManagerObject: {fileID: 179689049}
-  doors:
+  doorsTier1:
   - {fileID: 175915492}
   - {fileID: 55393356}
   - {fileID: 1035947126}
+  doorsTier2: []
+  doorsTier3: []
   scareTextObject: {fileID: 54119901}
   HUD: {fileID: 945886558}
   scareSounds:
