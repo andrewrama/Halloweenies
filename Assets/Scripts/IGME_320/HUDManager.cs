@@ -36,20 +36,6 @@ public class HUDManager : MonoBehaviour
     }
     public void SetKeyVisible(int keyIndex)
     {
-
-        switch(keyIndex)
-        {
-            case 0:
-                // set first key image here
-                // HUDKeyDisplayImages[keyIndex].sprite = sourceImg;
-                break;
-            case 2:
-                // set end key image here
-                // HUDKeyDisplayImages[HUDKeyDisplayImages.Length - 1].sprite = sourceImg;
-                HUDKeyDisplayImages[HUDKeyDisplayImages.Length - 1].color = Color.white;
-                return;
-        }
-
         HUDKeyDisplayImages[keyIndex].color = Color.white;
 
     }

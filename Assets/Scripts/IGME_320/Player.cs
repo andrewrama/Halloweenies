@@ -109,7 +109,7 @@ public class Player : MonoBehaviour
             }
             else
             {
-                ShowButtonInst("Front door key required");
+                ShowButtonInst("Square key required");
             }
         }
         else
@@ -126,7 +126,7 @@ public class Player : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("No basicKeys");
+                        Debug.Log("No triangle key");
                         ShowButtonInst("Circle Key required");
                     }
                     nearDoor = true;
@@ -145,7 +145,7 @@ public class Player : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("Not enough basicKeys");
+                        Debug.Log("No triangle key");
                         ShowButtonInst("Triangle Key required");
                     }
                     nearDoor = true;
