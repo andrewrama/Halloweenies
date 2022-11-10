@@ -5,7 +5,8 @@ using UnityEngine;
 public enum KeyType
 {
     End,
-    Basic
+    Tier1,
+    Tier2,
 }
 
 public class Key : MonoBehaviour

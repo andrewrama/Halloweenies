@@ -7,15 +7,26 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     // Keys inventory
-    public int BasicKeys
+    public bool HasTier1Key
     {
         get
         {
-            return basicKeys;
+            return hasTier1Key;
         }
         set
         {
-            basicKeys = value;
+            hasTier1Key = value;
+        }
+    }
+    public bool HasTier2Key
+    {
+        get
+        {
+            return hasTier2Key;
+        }
+        set
+        {
+            hasTier2Key = value;
         }
     }
     public bool HasEndKey
@@ -53,8 +64,9 @@ public class Player : MonoBehaviour
 
     // Records if the player can scare or not
     bool canScare = false;
+    private bool hasTier1Key;
+    private bool hasTier2Key;
     private bool hasEndKey;
-    private int basicKeys;
 
     // Scare Sounds
     public AudioClip[] scareSounds;
@@ -64,7 +76,6 @@ public class Player : MonoBehaviour
     void Start()
     {
         gameStateManager = gameStateManagerObject.GetComponent<GameStateManager>();
-        basicKeys = 0;
         hasEndKey = false;
         closedDoorsTier1 = new bool[doorsTier1.Length];
         for (int i = 0; i < closedDoorsTier1.Length; i++)
@@ -108,7 +119,7 @@ public class Player : MonoBehaviour
             {
                 if (closedDoorsTier1[i] && CheckDist(doorsTier1[i]))
                 {
-                    if (basicKeys >= 1)
+                    if (hasTier1Key)
                     {
                         Debug.Log("Keys");
                         ShowButtonInst("Press [E] to unlock");
@@ -127,7 +138,7 @@ public class Player : MonoBehaviour
             {
                 if (closedDoorsTier2[i] && CheckDist(doorsTier2[i]))
                 {
-                    if (basicKeys >= 2)
+                    if (hasTier2Key)
                     {
                         Debug.Log("Keys");
                         ShowButtonInst("Press [E] to unlock");
@@ -183,7 +194,7 @@ public class Player : MonoBehaviour
         {
             exitDoor.GetComponent<EndDoorScript>().OpenDoor();
         }
-        if (basicKeys >= 1)
+        if (hasTier1Key)
         {
             for (int i = 0; i < doorsTier1.Length; i++)
             {
@@ -194,7 +205,7 @@ public class Player : MonoBehaviour
                 }
             }
         }
-        if (basicKeys >= 2)
+        if (hasTier2Key)
         {
             for (int i = 0; i < doorsTier2.Length; i++)
             {
@@ -238,19 +249,26 @@ public class Player : MonoBehaviour
         Debug.Log("Key Collected");
         switch (keyType)
         {
+            case KeyType.Tier1:
+                //Update HUD to show key
+                HUD.SetKeyVisible(0);
+
+                // You can open a "circle" door
+                hasTier1Key = true;
+                break;
+            case KeyType.Tier2:
+                //Update HUD
+                HUD.SetKeyVisible(1);
+
+                // You can open a "triangle" door
+                hasTier2Key = true;
+                break;
             case KeyType.End:
                 // Update HUD
-                HUD.SetKeyVisible(-1);
+                HUD.SetKeyVisible(2);
 
-                // Open End door
+                // You can open the End door
                 hasEndKey = true;
-                break;
-            case KeyType.Basic:
-                //Update HUD
-                HUD.SetKeyVisible(basicKeys);
-
-                // Open a "generic" door
-                ++basicKeys;
                 break;
         }
     }

@@ -36,19 +36,18 @@ public class HUDManager : MonoBehaviour
     }
     public void SetKeyVisible(int keyIndex)
     {
-        //TODO: set key source images here
-        // -1 is reserved for the end door, which will be the last index
+
         switch(keyIndex)
         {
-            case -1:
-                // set end key image here
-                // HUDKeyDisplayImages[HUDKeyDisplayImages.Length - 1].sprite = sourceImg;
-                HUDKeyDisplayImages[HUDKeyDisplayImages.Length - 1].color = Color.white;
-                return;
             case 0:
                 // set first key image here
                 // HUDKeyDisplayImages[keyIndex].sprite = sourceImg;
                 break;
+            case 2:
+                // set end key image here
+                // HUDKeyDisplayImages[HUDKeyDisplayImages.Length - 1].sprite = sourceImg;
+                HUDKeyDisplayImages[HUDKeyDisplayImages.Length - 1].color = Color.white;
+                return;
         }
 
         HUDKeyDisplayImages[keyIndex].color = Color.white;
