@@ -11,8 +11,14 @@ public class GameStateManager : MonoBehaviour
     [SerializeField] private GameObject enemy;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject circleKey;
+    [SerializeField] private GameObject triangleKey;
+    [SerializeField] private GameObject squareKey;
     [SerializeField] private GameObject popUpButtonInstructions;
     [SerializeField] private Vector3[] enemySpawns;
+    [SerializeField] private Vector3[] circleKeySpawns;
+    [SerializeField] private Vector3[] triangleKeySpawns;
+    [SerializeField] private Vector3[] squareKeySpawns;
 
 
     // Start is called before the first frame update
@@ -79,8 +85,11 @@ public class GameStateManager : MonoBehaviour
         // reset player position
         player.transform.position = new Vector3(0.0f, 0.0f, -25.0f);
         // reset monster position
-        enemy.transform.position = enemySpawns[Random.Range(0,2)];
+        enemy.transform.position = enemySpawns[Random.Range(0, enemySpawns.Length)];
         // reset powerups/other collectibles
+        circleKey.transform.position = circleKeySpawns[Random.Range(0, circleKeySpawns.Length)];
+        triangleKey.transform.position = triangleKeySpawns[Random.Range(0, triangleKeySpawns.Length)];
+        squareKey.transform.position = squareKeySpawns[Random.Range(0, squareKeySpawns.Length)];
 
         gameIsWon = false;
     }
