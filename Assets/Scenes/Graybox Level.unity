@@ -1915,8 +1915,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.7752178, b: 0.5424528, a: 1}
-  m_Intensity: 1
-  m_Range: 132.44
+  m_Intensity: 2
+  m_Range: 50
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -2518,7 +2518,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.7752178, b: 0.5424528, a: 1}
-  m_Intensity: 1
+  m_Intensity: 2
   m_Range: 132.44
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -3704,7 +3704,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.7752178, b: 0.5424528, a: 1}
-  m_Intensity: 2
+  m_Intensity: 2.5
   m_Range: 50
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -6424,7 +6424,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.7752178, b: 0.5424528, a: 1}
-  m_Intensity: 1
+  m_Intensity: 2
   m_Range: 132.44
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -6553,8 +6553,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.7752178, b: 0.5424528, a: 1}
-  m_Intensity: 1
-  m_Range: 132.44
+  m_Intensity: 3
+  m_Range: 50
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -13512,7 +13512,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.7752178, b: 0.5424528, a: 1}
-  m_Intensity: 1
+  m_Intensity: 2
   m_Range: 132.44
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -26280,8 +26280,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.7752178, b: 0.5424528, a: 1}
-  m_Intensity: 1
-  m_Range: 132.44
+  m_Intensity: 2
+  m_Range: 50
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -30633,8 +30633,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1866150657}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 38.71, y: 0.17409009, z: -16.011}
-  m_LocalScale: {x: 2.647308, y: 0.5739502, z: 5.096282}
+  m_LocalPosition: {x: 38.76, y: 0.17409009, z: -15.69}
+  m_LocalScale: {x: 2.647308, y: 0.5739502, z: 2.6079714}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1922772305}
@@ -30798,8 +30798,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.7752178, b: 0.5424528, a: 1}
-  m_Intensity: 1
-  m_Range: 132.44
+  m_Intensity: 2
+  m_Range: 50
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
