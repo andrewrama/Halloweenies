@@ -23,7 +23,7 @@ public class Monster : MonoBehaviour
     Vector3 directionAwayFromPlayer; // Set when it is spooked
     float originalSpeed; // Records the original speed of the monster to be set back once its no longer scared
     public const float SCARED_SPEED = 0.2f; // Should be very small
-    public const float MAX_SCARE_DISTANCE = 4.0f;
+    public const float MAX_SCARE_DISTANCE = 6.0f;
 
     // Audio
     public AudioClip[] scaredSounds;
