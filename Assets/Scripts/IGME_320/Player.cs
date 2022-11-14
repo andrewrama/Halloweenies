@@ -309,8 +309,14 @@ public class Player : MonoBehaviour
 
     float GetDist(GameObject thing)
     {
-        return Mathf.Sqrt(Mathf.Pow(this.gameObject.transform.position.x - thing.transform.position.x, 2) +
-            Mathf.Pow(this.gameObject.transform.position.z - thing.transform.position.z, 2));
+        return (
+            Mathf.Sqrt(
+                Mathf.Pow(this.gameObject.transform.position.x - thing.transform.position.x, 2) + // x
+                Mathf.Pow(this.gameObject.transform.position.z - thing.transform.position.z, 2) // Y
+            ) /*+
+            gameObject.GetComponent<CapsuleCollider>().radius + // Radius 1
+            thing.GetComponent<CapsuleCollider>().radius // Radius 2*/
+        ) ;
     }
 
     public void removeDoor(GameObject openedDoor)

@@ -18,7 +18,8 @@ public class Monster : MonoBehaviour
     // Fear variables
     bool scared = false; // If they are afraid and running away from the player
     int scaredTimer = 0; // Keeps track of how many fixedUpdate()s until its not scared anymore
-    const int SCARED_TIME = 240; // How long it takes the enemy for them to not be scared anymore
+    public const int MAX_SCARED_TIME = 360; // 6 seconds
+    public const int MIN_SCARED_TIME = 120; // 2 Seconds
     const float SCARED_SMALL_STEP = 0.5f; // Arbitrarilly small distance that should be less than the thickness of the walls
     Vector3 directionAwayFromPlayer; // Set when it is spooked
     float originalSpeed; // Records the original speed of the monster to be set back once its no longer scared
@@ -122,8 +123,12 @@ public class Monster : MonoBehaviour
         // Check if the monster is in range
         if (dist <= MAX_SCARE_DISTANCE)
         {
+            // Calculate how long it should be scared (somewhere between min and max proportionally to how close the monster is)
+            scaredTimer += MIN_SCARED_TIME + (int)((MAX_SCARED_TIME - MIN_SCARED_TIME) * (dist / MAX_SCARE_DISTANCE));
+
+            Debug.Log("Monster Scared. scaredTimer = " + scaredTimer);
+
             directionAwayFromPlayer = (transform.position - player.transform.position).normalized;
-            scaredTimer = SCARED_TIME;
             scared = true;
             agent.speed = 0;
             angryEyebrows.SetActive(false);
