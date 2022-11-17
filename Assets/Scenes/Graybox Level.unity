@@ -37231,12 +37231,27 @@ PrefabInstance:
     - target: {fileID: 8280404079079264448, guid: d118e3d92456c0d4ebde42339c72f069,
         type: 3}
       propertyPath: m_Speed
-      value: 10
+      value: 8.5
       objectReference: {fileID: 0}
     - target: {fileID: 8280404079079264448, guid: d118e3d92456c0d4ebde42339c72f069,
         type: 3}
       propertyPath: m_AutoBraking
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8280404079079264448, guid: d118e3d92456c0d4ebde42339c72f069,
+        type: 3}
+      propertyPath: m_Acceleration
+      value: 999
+      objectReference: {fileID: 0}
+    - target: {fileID: 8280404079079264448, guid: d118e3d92456c0d4ebde42339c72f069,
+        type: 3}
+      propertyPath: m_AngularSpeed
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 8280404079079264448, guid: d118e3d92456c0d4ebde42339c72f069,
+        type: 3}
+      propertyPath: m_ObstacleAvoidanceType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8280404079079264449, guid: d118e3d92456c0d4ebde42339c72f069,
         type: 3}
