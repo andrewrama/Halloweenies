@@ -31,7 +31,7 @@ public class Monster : MonoBehaviour
     public AudioClip[] roamingSounds;
     public AudioClip walkingSound;
     AudioSource audioSource;
-    const int ROAMING_NOISE_TIME = 300;
+    const int ROAMING_NOISE_TIME = 150;
     int noiseTimer = 0;
 
     // Start is called before the first frame update
