@@ -141,7 +141,7 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 0.9150943, g: 0.45368776, b: 0.20201136, a: 1}
+  m_Color: {r: 0.19992878, g: 0.51243013, b: 0.9056604, a: 1}
   m_Intensity: 70
   m_Range: 20
   m_SpotAngle: 136.12578
@@ -1048,6 +1048,10 @@ MonoBehaviour:
   enemy: {fileID: 0}
   angryEyebrows: {fileID: 3984903886412984223}
   scaredEyebrows: {fileID: 3884143265176976197}
+  glow: {fileID: 3922587181865853641}
+  defaultColor: {r: 233, g: 130, b: 74, a: 1}
+  closeColor: {r: 0, g: 0, b: 0.78039217, a: 0}
+  scaredColor: {r: 0, g: 0, b: 0, a: 0}
   scaredSounds: []
   roamingSounds: []
   walkingSound: {fileID: 0}

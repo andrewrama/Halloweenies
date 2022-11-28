@@ -26,6 +26,12 @@ public class Monster : MonoBehaviour
     public const float SCARED_SPEED = 0.2f; // Should be very small
     public const float MAX_SCARE_DISTANCE = 6.0f;
 
+    // Light variables
+    public Light glow;
+    Color defaultColor = new Color(0.914f, 0.510f, 0.290f); // Light Orange
+    Color closeColor = new Color(0.918f, 0.106f, 0.165f); // Dark Red
+    Color scaredColor = new Color(0.200f, 0.514f, 0.906f); // Blue
+
     // Audio
     public AudioClip[] scaredSounds;
     public AudioClip[] roamingSounds;
@@ -37,12 +43,19 @@ public class Monster : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Delete this
+        Debug.Log(defaultColor);
+        Debug.Log(closeColor);
+        Debug.Log(scaredColor);
         // Record the original speed of the agent
         originalSpeed = agent.speed;
 
         // Start with only the angry eyebrows visible
         angryEyebrows.SetActive(true);
         scaredEyebrows.SetActive(false);
+
+        // Set the glow color to the default
+        glow.color = defaultColor;
 
         audioSource = enemy.GetComponents<AudioSource>()[0];
     }
@@ -62,6 +75,8 @@ public class Monster : MonoBehaviour
         {
             agent.SetDestination(player.transform.position);
             //PlayWalkingSound();
+
+            UpdateGlow();
         }
         else // They are scared of the player and should be moving away from them
         {
@@ -121,7 +136,7 @@ public class Monster : MonoBehaviour
     public void Spook(float dist)
     {
         // Check if the monster is in range
-        if (dist <= MAX_SCARE_DISTANCE)
+        if (dist <= MAX_SCARE_DISTANCE) // They are within range
         {
             // Calculate how long it should be scared (somewhere between min and max proportionally to how close the monster is)
             scaredTimer += MIN_SCARED_TIME + (int)((MAX_SCARED_TIME - MIN_SCARED_TIME) * (dist / MAX_SCARE_DISTANCE));
@@ -138,8 +153,25 @@ public class Monster : MonoBehaviour
             audioSource.clip = scaredSounds[Random.Range(0, 3)];
             audioSource.loop = false;
             audioSource.Play();
-        }
 
-        Debug.Log("Monster scared. Dist = " + dist);
+            // Update the glow color
+            glow.color = scaredColor;
+
+            Debug.Log("Monster scared. Dist = " + dist);
+        }
+    }
+
+    // Update the glow between defaultColor and closeColor
+    void UpdateGlow()
+    {
+        // Test if the player is close enough
+        if (player.GetComponent<Player>().GetDist(this.gameObject) > MAX_SCARE_DISTANCE) // They are outside of scare range
+        {
+            glow.color = defaultColor;
+        }
+        else // They are within scare range
+        {
+            glow.color = closeColor;
+        }
     }
 }

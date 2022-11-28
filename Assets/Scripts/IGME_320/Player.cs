@@ -307,7 +307,7 @@ public class Player : MonoBehaviour
         return GetDist(thing) < 3.0f;
     }
 
-    float GetDist(GameObject thing)
+    public float GetDist(GameObject thing)
     {
         return (
             Mathf.Sqrt(
