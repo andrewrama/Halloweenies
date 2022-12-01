@@ -71,6 +71,7 @@ public class Player : MonoBehaviour
     // Scare Sounds
     public AudioClip[] scareSounds;
     AudioSource audioSource;
+    public AudioClip keySound;
 
     // Start is called before the first frame update
     void Start()
@@ -247,6 +248,10 @@ public class Player : MonoBehaviour
     public void CollectKey(KeyType keyType)
     {
         Debug.Log("Key Collected");
+
+        audioSource.clip = keySound;
+        audioSource.Play();
+
         switch (keyType)
         {
             case KeyType.Tier1:

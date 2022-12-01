@@ -8783,6 +8783,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ea58713c8d8d95e40aa8176cb57424d7, type: 3}
   - {fileID: 8300000, guid: 47aaeb3f70625b34e984d0d0c8b9ee05, type: 3}
   - {fileID: 8300000, guid: 745a6897827fd7a418fda6dc4f605a46, type: 3}
+  keySound: {fileID: 8300000, guid: 4cd64abd35e93404f8478f9ec4684d61, type: 3}
 --- !u!65 &456309454
 BoxCollider:
   m_ObjectHideFlags: 0
