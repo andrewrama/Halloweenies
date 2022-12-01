@@ -23,7 +23,7 @@ public class Monster : MonoBehaviour
     const float SCARED_SMALL_STEP = 0.5f; // Arbitrarilly small distance that should be less than the thickness of the walls
     Vector3 directionAwayFromPlayer; // Set when it is spooked
     float originalSpeed; // Records the original speed of the monster to be set back once its no longer scared
-    public const float SCARED_SPEED = 0.2f; // Should be very small
+    public const float SCARED_SPEED = 10.0f; // Should be very small
     public const float MAX_SCARE_DISTANCE = 6.0f;
 
     // Light variables
@@ -81,7 +81,8 @@ public class Monster : MonoBehaviour
         else // They are scared of the player and should be moving away from them
         {
             // Move the enemy in the oposite direction of the player
-            transform.position += directionAwayFromPlayer * SCARED_SPEED;
+            //transform.position += directionAwayFromPlayer * SCARED_SPEED;
+            agent.SetDestination(gameObject.transform.position + directionAwayFromPlayer * 2);
         }
     }
 
@@ -145,7 +146,7 @@ public class Monster : MonoBehaviour
 
             directionAwayFromPlayer = (transform.position - player.transform.position).normalized;
             scared = true;
-            agent.speed = 0;
+            agent.speed = SCARED_SPEED;
             angryEyebrows.SetActive(false);
             scaredEyebrows.SetActive(true);
 
