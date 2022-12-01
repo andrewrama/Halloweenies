@@ -12319,10 +12319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HUD: {fileID: 624648852}
   HUDCandyDisplay: {fileID: 604678871}
-  HUDKeyDisplayImages:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  HUDKeyDisplayImages: []
 --- !u!1 &625400201
 GameObject:
   m_ObjectHideFlags: 0
