@@ -169,7 +169,7 @@ public class Player : MonoBehaviour
             // Scare the enemy
             enemy.GetComponent<Monster>().Spook(GetDist(enemy));
 
-            audioSource.clip = scareSounds[Random.Range(0, 2)];
+            audioSource.clip = scareSounds[Random.Range(0, scareSounds.Length)];
             audioSource.Play();
 
             // Remove their ability to scare
