@@ -71,8 +71,8 @@ public class Player : MonoBehaviour
 
     // Scare Sounds
     public AudioClip[] scareSounds;
-    AudioSource audioSource;
-    public AudioClip keySound;
+    AudioSource scareSource;
+    AudioSource keySource;
 
     // Start is called before the first frame update
     void Start()
@@ -92,7 +92,8 @@ public class Player : MonoBehaviour
         }
 
 
-        audioSource = player.GetComponent<AudioSource>();
+        scareSource = player.GetComponents<AudioSource>()[0];
+        keySource = player.GetComponents<AudioSource>()[1];
 
         // Save the default scare text
         scareText = scareTextObject.GetComponent<Text>();
@@ -171,8 +172,8 @@ public class Player : MonoBehaviour
             // Scare the enemy
             enemy.GetComponent<Monster>().Spook(GetDist(enemy));
 
-            audioSource.clip = scareSounds[Random.Range(0, scareSounds.Length)];
-            audioSource.Play();
+            scareSource.clip = scareSounds[Random.Range(0, scareSounds.Length)];
+            scareSource.Play();
 
             // Remove their ability to scare
             canScare = false;
@@ -250,8 +251,7 @@ public class Player : MonoBehaviour
     {
         Debug.Log("Key Collected");
 
-        audioSource.clip = keySound;
-        audioSource.Play();
+        keySource.Play();
 
         switch (keyType)
         {
