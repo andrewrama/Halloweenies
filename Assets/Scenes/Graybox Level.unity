@@ -8775,7 +8775,8 @@ MonoBehaviour:
   - {fileID: 444856082}
   - {fileID: 482323447}
   scareTextObject: {fileID: 54119901}
-  HUD: {fileID: 945886558}
+  candyHUD: {fileID: 624648854}
+  keyHUD: {fileID: 945886558}
   scareSounds:
   - {fileID: 8300000, guid: d2f019d547a68c24b820d8fbf7c894d9, type: 3}
   - {fileID: 8300000, guid: 5e0d2c487537a1c468965843c72545d2, type: 3}
@@ -12277,7 +12278,7 @@ GameObject:
   - component: {fileID: 624648853}
   - component: {fileID: 624648854}
   m_Layer: 5
-  m_Name: HUD (1)
+  m_Name: Candy HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18486,7 +18487,7 @@ GameObject:
   - component: {fileID: 945886557}
   - component: {fileID: 945886558}
   m_Layer: 5
-  m_Name: HUD
+  m_Name: Key HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

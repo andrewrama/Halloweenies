@@ -59,7 +59,8 @@ public class Player : MonoBehaviour
     Text scareText;
     string scareTextAvailable;
     string scareTextNotAvailable;
-    [SerializeField] private HUDManager HUD;
+    [SerializeField] private HUDManager candyHUD;
+    [SerializeField] private HUDManager keyHUD;
 
 
     // Records if the player can scare or not
@@ -180,7 +181,7 @@ public class Player : MonoBehaviour
             scareText.text = scareTextNotAvailable;
 
             //Change candy display in HUD
-            HUD.SetCandyInvisible();
+            candyHUD.SetCandyInvisible();
         }
         else
         {
@@ -242,7 +243,7 @@ public class Player : MonoBehaviour
         scareText.text = scareTextAvailable;
 
         //Change candy display in HUD
-        HUD.SetCandyVisible();
+        candyHUD.SetCandyVisible();
     }
 
     public void CollectKey(KeyType keyType)
@@ -256,21 +257,21 @@ public class Player : MonoBehaviour
         {
             case KeyType.Tier1:
                 //Update HUD to show key
-                HUD.SetKeyVisible(0);
+                keyHUD.SetKeyVisible(0);
 
                 // You can open a "circle" door
                 hasTier1Key = true;
                 break;
             case KeyType.Tier2:
                 //Update HUD
-                HUD.SetKeyVisible(1);
+                keyHUD.SetKeyVisible(1);
 
                 // You can open a "triangle" door
                 hasTier2Key = true;
                 break;
             case KeyType.End:
                 // Update HUD
-                HUD.SetKeyVisible(2);
+                keyHUD.SetKeyVisible(2);
 
                 // You can open the End door
                 hasEndKey = true;
