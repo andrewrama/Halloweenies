@@ -17,7 +17,7 @@ public class HUDManager : MonoBehaviour
             keyImage.color = Color.black;
         }
 
-        HUDCandyDisplay.enabled = false;
+        SetCandyInvisible();
     }
 
     // Update is called once per frame
@@ -28,15 +28,14 @@ public class HUDManager : MonoBehaviour
 
     public void SetCandyVisible()
     {
-        HUDCandyDisplay.enabled = true;
+        HUDCandyDisplay.color = Color.white;
     }
     public void SetCandyInvisible()
     {
-        HUDCandyDisplay.enabled = false;
+        HUDCandyDisplay.color = Color.black;
     }
     public void SetKeyVisible(int keyIndex)
     {
         HUDKeyDisplayImages[keyIndex].color = Color.white;
-
     }
 }

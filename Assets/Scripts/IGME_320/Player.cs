@@ -59,7 +59,8 @@ public class Player : MonoBehaviour
     Text scareText;
     string scareTextAvailable;
     string scareTextNotAvailable;
-    [SerializeField] private HUDManager HUD;
+    [SerializeField] private HUDManager candyHUD;
+    [SerializeField] private HUDManager keyHUD;
 
 
     // Records if the player can scare or not
@@ -70,7 +71,8 @@ public class Player : MonoBehaviour
 
     // Scare Sounds
     public AudioClip[] scareSounds;
-    AudioSource audioSource;
+    AudioSource scareSource;
+    AudioSource keySource;
 
     // Start is called before the first frame update
     void Start()
@@ -90,7 +92,8 @@ public class Player : MonoBehaviour
         }
 
 
-        audioSource = player.GetComponent<AudioSource>();
+        scareSource = player.GetComponents<AudioSource>()[0];
+        keySource = player.GetComponents<AudioSource>()[1];
 
         // Save the default scare text
         scareText = scareTextObject.GetComponent<Text>();
@@ -169,8 +172,8 @@ public class Player : MonoBehaviour
             // Scare the enemy
             enemy.GetComponent<Monster>().Spook(GetDist(enemy));
 
-            audioSource.clip = scareSounds[Random.Range(0, 2)];
-            audioSource.Play();
+            scareSource.clip = scareSounds[Random.Range(0, scareSounds.Length)];
+            scareSource.Play();
 
             // Remove their ability to scare
             canScare = false;
@@ -179,7 +182,7 @@ public class Player : MonoBehaviour
             scareText.text = scareTextNotAvailable;
 
             //Change candy display in HUD
-            HUD.SetCandyInvisible();
+            candyHUD.SetCandyInvisible();
         }
         else
         {
@@ -241,31 +244,34 @@ public class Player : MonoBehaviour
         scareText.text = scareTextAvailable;
 
         //Change candy display in HUD
-        HUD.SetCandyVisible();
+        candyHUD.SetCandyVisible();
     }
 
     public void CollectKey(KeyType keyType)
     {
         Debug.Log("Key Collected");
+
+        keySource.Play();
+
         switch (keyType)
         {
             case KeyType.Tier1:
                 //Update HUD to show key
-                HUD.SetKeyVisible(0);
+                keyHUD.SetKeyVisible(0);
 
                 // You can open a "circle" door
                 hasTier1Key = true;
                 break;
             case KeyType.Tier2:
                 //Update HUD
-                HUD.SetKeyVisible(1);
+                keyHUD.SetKeyVisible(1);
 
                 // You can open a "triangle" door
                 hasTier2Key = true;
                 break;
             case KeyType.End:
                 // Update HUD
-                HUD.SetKeyVisible(2);
+                keyHUD.SetKeyVisible(2);
 
                 // You can open the End door
                 hasEndKey = true;
